@@ -37,6 +37,7 @@ Every outcome needs topic-level development, consistency review, and the require
 ## Repository guide
 
 - [First Topic — BASE index](topics/T01-purpose-role-authority/BASE/index.md)
+- [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current ccc status](versions/current-status.md)
 
@@ -44,7 +45,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The first Topic, **Purpose, Role and Authority of the ccc**, is in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
+The first Topic, **Purpose, Role and Authority of the ccc**, and the second Topic, **Voting**, are in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
