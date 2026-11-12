@@ -1,54 +1,53 @@
 # WPJS Constitution Project
 
-This repository holds the working text and traceable decision records for developing a Constitution for junior squash in the Western Cape.
+This repository holds the versioned Topics and clauses for developing a new Constitution (ccc) for junior squash in the Western Cape.
 
-The project is being developed topic by topic over an extended period, as time is available. The aim is a clear, outcome-led Constitution that supports participation, transparency, and inclusion. King V is the governance reference point; this project is developing rules for its own context rather than adopting another organisation's constitution.
+The project is being developed topic by topic over time. The aim is a clear, outcome-led ccc that serves junior squash and the people and organisations supporting it. King V is a governance reference point, not a template.
 
-## Project action plan
+## Project Action Plan
 
-The project Action Plan is maintained separately in Google Drive. Add its link here once the sharing link is available. The Action Plan is the record of the agreed process and working model; this repository is the source of truth for the Constitution's text, clause history, evidence, consultation records, and adoption record.
+The Action Plan is maintained separately in Google Drive. Add its link here when available. The Action Plan records the agreed process; this repository records Topic snapshots, clause changes, version indexes, evidence references, and approval status.
 
-## Working principles
+## Working model
 
-- Work through clear topics, discussing the intended outcome before drafting clauses.
-- Give each clause a stable identifier and record its origin, options considered, rationale, evidence, dependencies, consultation, approval status, and review trigger.
-- Clearly distinguish proposals, reasoned recommendations, and formally approved decisions.
-- Separate durable constitutional requirements from operational policies. Review policies whenever the governing group changes.
-- Check clauses against one another and against related policies so the full document works as a coherent whole.
-- Make each topic understandable to stakeholders before they are asked to vote on it, then review the complete Constitution before final adoption.
-- Preserve change history and review proposed text changes before they become the current version.
+- Start each Topic with a BASE snapshot developed from the project's agreed outcomes. No wording or structure from a previous ccc carries over automatically.
+- Give every clause a stable ID. Keep the wording within a versioned Topic snapshot so its history can be traced.
+- Each meaningful check-in should briefly explain why it is being made and what changed. Git records the actual text differences and their history; separate decision documents are only needed when more explanation or evidence is required.
+- Close a Topic when its discussion and drafting are complete, for the next ccc edition.
+- Every ccc edition contains a same-numbered version of every Topic. Unchanged Topics are carried forward unchanged and clearly marked.
+- The Master Record Index (MRI) lists Topics, their latest snapshot, and status. The index for a particular ccc edition lists its Topics; the edition number makes their Topic version implicit.
+- Distinguish working drafts, closed Topic versions, and formally approved or adopted material.
+- Write in plain, understandable English. Improve the ccc over time rather than delaying progress in pursuit of a perfect first version.
 
-## Core outcomes under development
+## Design outcomes under development
 
-The following are guiding outcomes for topic discussions, not adopted constitutional clauses:
+These are guiding outcomes, not adopted clauses:
 
-- Clearly bound the authority of WPS over junior squash.
-- Provide an independent route for review or appeal so WPJS is not the final arbitrator of its own disputed decisions.
+- Develop a stand-alone ccc for a new WPJS body, grounded in the needs of junior squash in the Western Cape. Treat affiliation conditions as a separate external relationship; they do not automatically determine the ccc's content.
+- Serve junior players and the wider junior squash community, including families, clubs, coaches, administrators, schools, and others who support junior squash.
+- Make the ccc a guide and framework for operational continuity and fair, transparent governance.
+- Keep constitutional requirements distinct from operational policies. Policies explain implementation and cannot override the ccc.
 - Define the governance functions that need to be performed rather than assuming traditional committee roles.
 - Make participation, meetings, and voting transparent and practical.
-- Put durable communications requirements in the Constitution and methods in policy, including email delivery tracking and regular review of email addresses.
+- Provide independent review or appeal where appropriate.
+- Put durable communications requirements in the ccc and methods in policy, including email delivery tracking and regular review of email addresses.
 
-Each outcome needs topic-level development, consistency review, and approval through the proper process before it becomes binding.
+Every outcome needs topic-level development, consistency review, and the required approval before it becomes binding.
 
 ## Repository guide
 
-The repository is intended to contain:
+- [First Topic — BASE](topics/T01-purpose-role-authority/BASE.md)
+- [Master Record Index](register/master-record-index.md)
+- [Current ccc status](versions/current-status.md)
 
-- **Constitution text:** the current consolidated draft and, once adopted, the approved version.
-- **Topics:** working drafts and voting briefs for each topic.
-- **Decisions:** clause-level decision records that explain how the wording developed.
-- **Evidence:** sources consulted, with dates and notes on how they informed decisions.
-- **Policies:** supporting operating rules, kept distinct from constitutional requirements.
-- **Consultation and adoption records:** summaries of input, voting procedures, results, and formal approval.
+Each Topic snapshot contains its clauses and stable clause IDs. The MRI tracks the latest state of each Topic. When an edition is ready, its index identifies which Topics belong to it. The selected Topic versions can be assembled into a readable copy when needed; the versioned Topic records remain the source material.
 
-The exact folder layout and topic sequence may evolve as the project develops. Stable clause IDs and links between records should be preserved when files move or are reorganized.
+## Current status
 
-## Current project status
+The first Topic, **Purpose, Role and Authority of the ccc**, is in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
 
-The GitHub organisation and private repository have been created. The project Action Plan is in Google Drive. Topic-level drafting has not yet begun.
+## Review and approval
 
-## Participation and review
+Keep the working repository private and give access according to each person's role. Contributors use their own GitHub accounts so changes and reviews are attributable. Review proposed text changes before they become the current draft.
 
-During drafting, keep the repository private and give access to people according to their role. Contributors should use their own GitHub accounts so proposed changes and reviews are attributable. Review proposed changes before merging them into the current draft. The required technical review controls depend on the GitHub plan selected for this private repository.
-
-The repository's working drafts and discussion records do not by themselves constitute formal approval. Approved text must be identified clearly and supported by a record of the decision made by the authorised constituency.
+A repository change records a working version; it does not by itself constitute formal approval. Record stakeholder consultation, voting, and adoption separately.
