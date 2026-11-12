@@ -34,7 +34,7 @@ This ccc is being created for a new WPJS body. No wording, rule, structure, or d
 
 ### T01-C06 — Legal status and plain language
 
-Once properly adopted, the ccc is WPJS’s formal governing document. It must operate within applicable South African law, including laws that protect children. It must be written in plain, understandable English, with any necessary technical terms explained.
+Once properly adopted, the ccc is WPJS’s formal governing document. It must operate within applicable South African law, including the Children’s Act. It must be written in plain, understandable English, with any necessary technical terms explained.
 
 ## Design notes (not proposed ccc clauses)
 
