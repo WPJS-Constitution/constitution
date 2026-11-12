@@ -11,7 +11,7 @@ The Action Plan is maintained separately in Google Drive. Add its link here when
 ## Working model
 
 - Start each Topic with a BASE snapshot developed from the project's agreed outcomes. No wording or structure from a previous ccc carries over automatically.
-- Give every clause a stable ID. Keep the wording within a versioned Topic snapshot so its history can be traced.
+- Give every clause a stable ID and its own file within each Topic-version folder, so its wording can be reviewed and tracked individually.
 - Each meaningful check-in should briefly explain why it is being made and what changed. Git records the actual text differences and their history; separate decision documents are only needed when more explanation or evidence is required.
 - Close a Topic when its discussion and drafting are complete, for the next ccc edition.
 - Every ccc edition contains a same-numbered version of every Topic. Unchanged Topics are carried forward unchanged and clearly marked.
@@ -36,11 +36,11 @@ Every outcome needs topic-level development, consistency review, and the require
 
 ## Repository guide
 
-- [First Topic — BASE](topics/T01-purpose-role-authority/BASE.md)
+- [First Topic — BASE index](topics/T01-purpose-role-authority/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current ccc status](versions/current-status.md)
 
-Each Topic snapshot contains its clauses and stable clause IDs. The MRI tracks the latest state of each Topic. There is no continuously maintained consolidated ccc file: when needed, a readable edition can be assembled outside GitHub from all Topic snapshots for that edition. The versioned Topic records remain the source of truth.
+Each Topic-version folder contains an index and separate clause files with stable IDs. The MRI tracks the latest Topic snapshot. There is no continuously maintained consolidated ccc file: when needed, a readable edition can be assembled outside GitHub from all Topic snapshots for that edition. The versioned Topic and clause records remain the source of truth.
 
 ## Current status
 

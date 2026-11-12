@@ -6,7 +6,7 @@ The topic map is still being developed. This is therefore an initial register, n
 
 | Topic ID | Topic | Latest snapshot | Status | Next step |
 |---|---|---|---|---|
-| T01 | Purpose, Role and Authority of the ccc | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic file |
+| T01 | [Purpose, Role and Authority of the ccc](../topics/T01-purpose-role-authority/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 
 ## How to use this index
 
