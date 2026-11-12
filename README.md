@@ -23,13 +23,13 @@ The Action Plan is maintained separately in Google Drive. Add its link here when
 
 These are guiding outcomes, not adopted clauses:
 
-- Develop a stand-alone ccc for a new WPJS body, grounded in the needs of junior squash in the Western Cape. Treat affiliation conditions as a separate external relationship; they do not automatically determine the ccc's content.
+- Develop a stand-alone ccc for a new WPJS body, grounded in the needs of junior squash in the Western Cape. Treat affiliation conditions as a separate external relationship; they do not automatically determine the ccc's content, and the ccc itself will not refer to WPS.
 - Serve junior players and the wider junior squash community, including families, clubs, coaches, administrators, schools, and others who support junior squash.
 - Make the ccc a guide and framework for operational continuity and fair, transparent governance.
 - Keep constitutional requirements distinct from operational policies. Policies explain implementation and cannot override the ccc.
 - Define the governance functions that need to be performed rather than assuming traditional committee roles.
 - Make participation, meetings, and voting transparent and practical.
-- Provide independent review or appeal where appropriate.
+- Provide independent review or appeal so WPJS is not the final arbitrator of disputes about its own decisions.
 - Put durable communications requirements in the ccc and methods in policy, including email delivery tracking and regular review of email addresses.
 
 Every outcome needs topic-level development, consistency review, and the required approval before it becomes binding.
@@ -40,7 +40,7 @@ Every outcome needs topic-level development, consistency review, and the require
 - [Master Record Index](register/master-record-index.md)
 - [Current ccc status](versions/current-status.md)
 
-Each Topic snapshot contains its clauses and stable clause IDs. The MRI tracks the latest state of each Topic. When an edition is ready, its index identifies which Topics belong to it. The selected Topic versions can be assembled into a readable copy when needed; the versioned Topic records remain the source material.
+Each Topic snapshot contains its clauses and stable clause IDs. The MRI tracks the latest state of each Topic. There is no continuously maintained consolidated ccc file: when needed, a readable edition can be assembled outside GitHub from all Topic snapshots for that edition. The versioned Topic records remain the source of truth.
 
 ## Current status
 
