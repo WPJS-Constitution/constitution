@@ -28,6 +28,7 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 - [T03-C14 — Meeting notice content](T03-C14-notice-content.md)
 - [T03-C15 — Notice to all stakeholders](T03-C15-stakeholder-notice.md)
 - [T03-C16 — Electronic delivery and verified notice](T03-C16-electronic-delivery.md)
+- [T03-C17 — Attendance and quorum](T03-C17-attendance-and-quorum.md)
 
 ## Design principle
 
