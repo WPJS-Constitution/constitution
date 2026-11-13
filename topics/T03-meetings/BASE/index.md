@@ -28,7 +28,9 @@ This Topic applies the project-wide principle [“Governance is not a Thoroughbr
 ## Design notes (not proposed ccc clauses)
 
 - The AGM must take place within 30 days of the financial year end; incomplete annual reporting is not a reason to postpone it.
-- The financial period, minimum financial-reporting requirements, and the basis for member fees belong in a separate Financial Topic. T03 refers to the financial year end only to set AGM timing.
+- Financial period, minimum financial-reporting requirements, and financial record-keeping belong in a separate Financial Topic. A February year-end remains the working proposal for that Topic.
+- Financial Topic seed: all fees charged to members must be based on a budget. WPJS does not currently prepare an annual budget, so the Financial Topic must address how a budget is prepared for that purpose.
+- Financial Topic seed: financial records should be current to within the last 48 hours, with no money unaccounted for longer than 48 hours.
 - Whether incomplete annual reporting prevents electronic voting belongs in the Voting Topic, not the Meetings Topic.
 - If an external relationship brings additional reporting or governance requirements beyond the ccc, the requirements are to be disclosed and approved through an electronic vote before WPJS accepts that relationship.
 - Policies may add implementation detail but must not weaken, waive, or postpone the constitutional AGM and annual-reporting requirements.
