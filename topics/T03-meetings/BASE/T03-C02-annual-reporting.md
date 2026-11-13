@@ -1,3 +1,3 @@
 # T03-C02 — Annual reporting
 
-The Annual General Meeting includes presentation of WPJS's annual report, including a report from the Chair and the financial statements.
+The Annual General Meeting includes WPJS's annual reporting. This must include the Chair's report and WPJS's financial statements.
