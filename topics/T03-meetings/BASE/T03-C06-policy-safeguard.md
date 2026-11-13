@@ -1,3 +1,3 @@
 # T03-C06 — Policies cannot weaken requirements
 
-A policy may add detail about annual reporting and how the Annual General Meeting is held. It must not weaken, waive, or postpone the requirements in T03-C01, T03-C02, or T03-C08.
+A policy may add detail about how requirements in this Topic are carried out. It must not weaken, waive, or postpone any requirement in this Topic.
