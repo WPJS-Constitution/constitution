@@ -1,8 +1,8 @@
 # Current ccc Status
 
 **Formal Constitution edition:** None assembled, approved, or published yet.  
-**Current working material:** T01 — Purpose, Role and Authority of the ccc, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed.  
-**Topic map:** In development; the MRI currently lists the first two agreed Topics.
+**Current working material:** T01 — Purpose, Role and Authority of the ccc, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed. T03 — Meetings, BASE snapshot; in progress and not closed.  
+**Topic map:** In development; the MRI currently lists the first three agreed Topics.
 
 ## Versioning rule
 
