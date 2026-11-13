@@ -20,6 +20,14 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 - [T03-C05 — Additional external requirements](T03-C05-external-requirements.md)
 - [T03-C06 — Policies cannot weaken requirements](T03-C06-policy-safeguard.md)
 - [T03-C08 — No postponement for incomplete reporting](T03-C08-no-postponement.md)
+- [T03-C09 — Meeting recordings](T03-C09-recording.md)
+- [T03-C10 — Transcripts](T03-C10-transcripts.md)
+- [T03-C11 — Minutes](T03-C11-minutes.md)
+- [T03-C12 — Information protected by the Children's Act](T03-C12-childrens-act-redaction.md)
+- [T03-C13 — Meeting notice period](T03-C13-notice-period.md)
+- [T03-C14 — Meeting notice content](T03-C14-notice-content.md)
+- [T03-C15 — Notice to all stakeholders](T03-C15-stakeholder-notice.md)
+- [T03-C16 — Electronic delivery and verified notice](T03-C16-electronic-delivery.md)
 
 ## Design principle
 
@@ -33,12 +41,15 @@ This Topic applies the project-wide principle [“Governance is not a Thoroughbr
 - Financial Topic seed: financial records should be current to within the last 48 hours, with no money unaccounted for longer than 48 hours.
 - Whether incomplete annual reporting prevents electronic voting belongs in the Voting Topic, not the Meetings Topic.
 - If an external relationship brings additional reporting or governance requirements beyond the ccc, the requirements are to be disclosed and approved through an electronic vote before WPJS accepts that relationship.
-- Policies may add implementation detail but must not weaken, waive, or postpone the constitutional AGM and annual-reporting requirements.
+- Email is the current method for electronic meeting notices; the method is policy detail, but electronic delivery and verification are constitutional requirements.
+- Policies may add implementation detail but must not weaken, waive, or postpone any requirement in this Topic.
 
 ## Open design questions
 
 - How and when annual-reporting materials are made available to members before the AGM.
-- What notice, participation, minutes, and record-keeping requirements best support meetings for debate and discussion.
+- How long meeting recordings and transcripts are kept, and who may access recordings.
+- How the stakeholder list is maintained and how successful electronic delivery is verified.
+- What additional notice, participation, and record-keeping details best support meetings for debate and discussion.
 - How requirements imposed directly by law are distinguished from additional conditions attached to an external relationship, once WPJS's legal form is settled.
 
 These questions do not prevent this BASE from recording the agreed starting principles. They must be resolved before the Topic is closed for a Constitution edition.
