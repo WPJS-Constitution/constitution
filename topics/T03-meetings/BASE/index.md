@@ -13,12 +13,14 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 
 ## Clauses in this Topic version
 
-- [T03-C01 — Financial year and Annual General Meeting](T03-C01-agm-timing.md)
+- [T03-C01 — Financial year](T03-C01-financial-year.md)
 - [T03-C02 — Annual reporting](T03-C02-annual-reporting.md)
 - [T03-C03 — Purpose of meetings](T03-C03-purpose.md)
 - [T03-C04 — Special General Meetings](T03-C04-sgms.md)
 - [T03-C05 — Additional external requirements](T03-C05-external-requirements.md)
 - [T03-C06 — Policies cannot weaken requirements](T03-C06-policy-safeguard.md)
+- [T03-C07 — Timing of the Annual General Meeting](T03-C07-agm-timing.md)
+- [T03-C08 — No postponement for incomplete reporting](T03-C08-no-postponement.md)
 
 ## Design principle
 
@@ -26,14 +28,14 @@ This Topic applies the project-wide principle [“Governance is not a Thoroughbr
 
 ## Design notes (not proposed ccc clauses)
 
-- WPJS's financial year is proposed to run from 1 March through the last day of February.
+- WPJS's financial year runs from 1 March through the last day of February.
 - The AGM is a firm annual obligation and must occur within 30 calendar days after the financial year ends. Incomplete annual reporting is not a reason to postpone it.
 - If an external relationship brings additional reporting or governance requirements beyond the ccc, the requirements are to be disclosed and approved through an electronic vote before WPJS accepts that relationship.
 - Policies may add implementation detail but must not weaken, waive, or postpone the constitutional AGM and annual-reporting requirements.
 
 ## Open design questions
 
-- What the annual report includes beyond the Chair's report and financial statements.
+- What level of detail the financial statements should provide, and whether annual reporting should include other material.
 - How and when annual-reporting materials are made available to members before the AGM.
 - What notice, participation, minutes, and record-keeping requirements best support meetings for debate and discussion.
 - How requirements imposed directly by law are distinguished from additional conditions attached to an external relationship, once WPJS's legal form is settled.
