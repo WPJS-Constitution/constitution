@@ -1,8 +1,8 @@
 # WPJS Constitution Project
 
-This repository holds the versioned Topics and clauses for developing a new Constitution (ccc) for junior squash in the Western Cape.
+This repository holds the versioned Topics and clauses for developing a new Constitution for junior squash in the Western Cape.
 
-The project is being developed topic by topic over time. The aim is a clear, outcome-led ccc that serves junior squash and the people and organisations supporting it. King V is a governance reference point, not a template.
+The project is being developed topic by topic over time. The aim is a clear, outcome-led Constitution that serves junior squash and the people and organisations supporting it. King V is a governance reference point, not a template.
 
 ## Project Action Plan
 
@@ -10,27 +10,27 @@ The Action Plan is maintained separately in Google Drive. Add its link here when
 
 ## Working model
 
-- Start each Topic with a BASE snapshot developed from the project's agreed outcomes. No wording or structure from a previous ccc carries over automatically.
+- Start each Topic with a BASE snapshot developed from the project's agreed outcomes. No wording or structure from a previous Constitution carries over automatically.
 - Give every clause a stable ID and its own file within each Topic-version folder, so its wording can be reviewed and tracked individually.
 - Each meaningful check-in should briefly explain why it is being made and what changed. Git records the actual text differences and their history; separate decision documents are only needed when more explanation or evidence is required.
-- Close a Topic when its discussion and drafting are complete, for the next ccc edition.
-- Every ccc edition contains a same-numbered version of every Topic. Unchanged Topics are carried forward unchanged and clearly marked.
-- The Master Record Index (MRI) lists Topics, their latest snapshot, and status. The index for a particular ccc edition lists its Topics; the edition number makes their Topic version implicit.
+- Close a Topic when its discussion and drafting are complete, for the next Constitution edition.
+- Every Constitution edition contains a same-numbered version of every Topic. Unchanged Topics are carried forward unchanged and clearly marked.
+- The Master Record Index (MRI) lists Topics, their latest snapshot, and status. The index for a particular Constitution edition lists its Topics; the edition number makes their Topic version implicit.
 - Distinguish working drafts, closed Topic versions, and formally approved or adopted material.
-- Write in plain, understandable English. Improve the ccc over time rather than delaying progress in pursuit of a perfect first version.
+- Write in plain, understandable English. Improve the Constitution over time rather than delaying progress in pursuit of a perfect first version.
 
 ## Design outcomes under development
 
 These are guiding outcomes, not adopted clauses:
 
-- Develop a stand-alone ccc for a new WPJS body, grounded in the needs of junior squash in the Western Cape. Treat affiliation conditions as a separate external relationship; they do not automatically determine the ccc's content, and the ccc itself will not refer to WPS.
+- Develop a stand-alone Constitution for a new WPJS body, grounded in the needs of junior squash in the Western Cape. Treat affiliation conditions as a separate external relationship; they do not automatically determine the Constitution's content, and the Constitution itself will not refer to WPS.
 - Serve junior players and the wider junior squash community, including families, clubs, coaches, administrators, schools, and others who support junior squash.
-- Make the ccc a guide and framework for operational continuity and fair, transparent governance.
-- Keep constitutional requirements distinct from operational policies. Policies explain implementation and cannot override the ccc.
+- Make the Constitution a guide and framework for operational continuity and fair, transparent governance.
+- Keep constitutional requirements distinct from operational policies. Policies explain implementation and cannot override the Constitution.
 - Define the governance functions that need to be performed rather than assuming traditional committee roles.
 - Make participation, meetings, and voting transparent and practical.
 - Provide independent review or appeal so WPJS is not the final arbitrator of disputes about its own decisions.
-- Put durable communications requirements in the ccc and methods in policy, including email delivery tracking and regular review of email addresses.
+- Put durable communications requirements in the Constitution and methods in policy, including email delivery tracking and regular review of email addresses.
 
 Every outcome needs topic-level development, consistency review, and the required approval before it becomes binding.
 
@@ -46,13 +46,13 @@ Every outcome needs topic-level development, consistency review, and the require
 - [Finances — BASE index](topics/T04-finances/BASE/index.md)
 - [Intention — BASE index](topics/T05-intention/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
-- [Current ccc status](versions/current-status.md)
+- [Current Constitution status](versions/current-status.md)
 
-Each Topic-version folder contains an index and separate clause files with stable IDs. The MRI tracks the latest Topic snapshot. There is no continuously maintained consolidated ccc file: when needed, a readable edition can be assembled outside GitHub from all Topic snapshots for that edition. The versioned Topic and clause records remain the source of truth.
+Each Topic-version folder contains an index and separate clause files with stable IDs. The MRI tracks the latest Topic snapshot. There is no continuously maintained consolidated Constitution file: when needed, a readable edition can be assembled outside GitHub from all Topic snapshots for that edition. The versioned Topic and clause records remain the source of truth.
 
 ## Current status
 
-The first five Topics—**Purpose, Role and Authority of the ccc**, **Voting**, **Meetings**, **Finances**, and **Intention**—are in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
+The first five Topics—**Purpose, Role and Authority of the Constitution**, **Voting**, **Meetings**, **Finances**, and **Intention**—are in progress at BASE. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
