@@ -1,0 +1,57 @@
+name: Open a reviewable pull request
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: Existing branch containing the proposed changes
+        required: true
+        type: string
+      title:
+        description: Pull request title
+        required: true
+        type: string
+      description:
+        description: Why this change is proposed and what it contains
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  open-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open PR for owner review
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_BRANCH: ${{ inputs.source_branch }}
+          PR_TITLE: ${{ inputs.title }}
+          PR_DESCRIPTION: ${{ inputs.description }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [[ ! "$SOURCE_BRANCH" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+            echo "Use a branch name containing letters, numbers, dots, underscores, or hyphens."
+            exit 1
+          fi
+          if [[ "$SOURCE_BRANCH" == "main" ]]; then
+            echo "The source branch must not be main."
+            exit 1
+          fi
+          if [[ -z "$PR_TITLE" || -z "$PR_DESCRIPTION" ]]; then
+            echo "A title and description are required."
+            exit 1
+          fi
+          if gh pr view "$SOURCE_BRANCH" --repo "$REPOSITORY" >/dev/null 2>&1; then
+            echo "An open pull request already exists for this branch."
+            exit 1
+          fi
+          gh pr create \
+            --repo "$REPOSITORY" \
+            --base main \
+            --head "$SOURCE_BRANCH" \
+            --title "$PR_TITLE" \
+            --body "$PR_DESCRIPTION" \
+            --reviewer RobRademeyer
