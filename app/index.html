@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WPJS Constitution Assembler</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17202a;background:#f3f6f8}
+*{box-sizing:border-box}body{margin:0}main{width:min(100% - 28px,1000px);margin:36px auto}
+header,section{background:#fff;border:1px solid #d5dde5;border-radius:12px;padding:24px;margin-bottom:16px}
+h1{margin:0 0 8px;font-size:2rem}h2{margin:0 0 14px;font-size:1.2rem}
+p{line-height:1.55}.lede,#details{color:#52616f}
+.notice{padding:10px 14px;background:#fff9e8;border-left:4px solid #c48b14}
+button{border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:650;cursor:pointer;background:#145da0;color:white}
+button:disabled{opacity:.6;cursor:wait}.secondary{background:#e9f2fa;color:#0e477b}
+#status{min-height:1.5em;color:#52616f}#status.error{color:#a52a2a}#status.success{color:#176b48}
+textarea{display:block;width:100%;min-height:420px;resize:vertical;padding:14px;border:1px solid #d5dde5;border-radius:8px;font:13px/1.55 ui-monospace,Consolas,monospace}
+.controls{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:600px){main{margin:14px auto}header,section{padding:17px}.controls button{width:100%}}
+</style>
+</head>
+<body>
+<main>
+<header><h1>WPJS Constitution Assembler</h1>
+<p class="lede">Build a readable Markdown compilation from the latest Topic snapshots in the Master Record Index. The app reads GitHub directly; you do not need to clone the repository.</p></header>
+<section>
+<h2>Assemble the current working ccc</h2>
+<p class="notice">This is a working compilation. It does not by itself mean the Constitution has been approved or adopted.</p>
+<div class="controls"><button id="build">Assemble Markdown</button><button id="download" class="secondary" disabled>Download .md</button></div>
+<p id="status" role="status" aria-live="polite">Ready. This no-login version needs the source repository to be publicly readable.</p><p id="details"></p>
+</section>
+<section><h2>Preview</h2><textarea id="preview" readonly spellcheck="false" aria-label="Compiled Constitution Markdown" placeholder="Your assembled Markdown will appear here."></textarea></section>
+<p class="lede">Version 1 is read-only. It follows MRI order, includes each linked clause, and records the build time and source commit.</p>
+</main>
+<script>
+"use strict";
+var owner="WPJS-Constitution", repo="constitution", branch="main";
+var mriPath="register/master-record-index.md";
+var apiRoot="https://api.github.com/repos/"+owner+"/"+repo;
+var rawRoot="https://raw.githubusercontent.com/"+owner+"/"+repo;
+var buildButton=document.getElementById("build"),downloadButton=document.getElementById("download");
+var statusBox=document.getElementById("status"),details=document.getElementById("details"),preview=document.getElementById("preview");
+var markdown="",buildDate="";
+function status(text,kind){statusBox.textContent=text;statusBox.className=kind||""}
+function timestamp(date){
+  function pad(n){return String(n).padStart(2,"0")}
+  var offset=-date.getTimezoneOffset(),sign=offset>=0?"+":"-",abs=Math.abs(offset);
+  return date.getFullYear()+"-"+pad(date.getMonth()+1)+"-"+pad(date.getDate())+"T"+
+    pad(date.getHours())+":"+pad(date.getMinutes())+":"+pad(date.getSeconds())+
+    sign+pad(Math.floor(abs/60))+":"+pad(abs%60);
+}
+async function getText(url,label){
+  var response;
+  try{response=await fetch(url,{cache:"no-store"})}
+  catch(e){throw new Error("Could not reach GitHub while reading "+label+". Check your internet connection.")}
+  if(!response.ok){
+    if(response.status===404)throw new Error("GitHub cannot find "+label+". The repository or file may not be publicly readable yet.");
+    if(response.status===403||response.status===429)throw new Error("GitHub temporarily refused the request for "+label+". Wait a little, then try again.");
+    throw new Error("GitHub returned "+response.status+" while reading "+label+".");
+  }
+  return response.text();
+}
+async function getCommit(){
+  var response;
+  try{response=await fetch(apiRoot+"/commits/"+branch,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"})}
+  catch(e){throw new Error("Could not reach GitHub to identify the latest main-branch commit.")}
+  if(response.status===404)throw new Error("The repository is not publicly readable. This version needs public read access so people can use the SPA without signing in or cloning.");
+  if(response.status===403||response.status===429)throw new Error("GitHub’s unauthenticated request limit was reached. Wait a little, then try again.");
+  if(!response.ok)throw new Error("Could not identify the latest main-branch commit (GitHub returned "+response.status+").");
+  var data=await response.json();
+  if(!data.sha)throw new Error("GitHub did not return a source commit ID.");
+  return {sha:data.sha,date:(data.commit&&data.commit.committer&&data.commit.committer.date)||""};
+}
+function resolveLink(baseFile,target){
+  var path=target.trim().replace(/^<|>$/g,"").split(/[?#]/,1)[0];
+  if(!path||/^(https?:|mailto:|\/)/i.test(path))throw new Error("Expected a relative Markdown link in "+baseFile+".");
+  var parts=baseFile.split("/").slice(0,-1);
+  path.split("/").forEach(function(part){
+    if(!part||part===".")return;
+    if(part===".."){if(!parts.length)throw new Error("A Markdown link points outside the repository.");parts.pop()}
+    else parts.push(part);
+  });
+  var result=parts.join("/");
+  if(!/\.md$/i.test(result))throw new Error("Expected a Markdown file link in "+baseFile+".");
+  return result;
+}
+function topicsFromMRI(text){
+  var result=[],seen=new Set(),row=/^\|\s*(T\d+)\s*\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)\|/;
+  text.split(/\r?\n/).forEach(function(line){
+    var m=line.match(row);if(!m)return;
+    if(seen.has(m[1]))throw new Error("The MRI lists "+m[1]+" more than once.");
+    seen.add(m[1]);result.push({id:m[1],title:m[2].trim(),snapshot:m[4].trim(),index:resolveLink(mriPath,m[3])});
+  });
+  if(!result.length)throw new Error("No Topic rows were found in the Master Record Index.");
+  return result;
+}
+function clausesFromIndex(topic,indexPath,text){
+  var result=[],inside=false;
+  text.split(/\r?\n/).forEach(function(line){
+    if(/^##\s+Clauses in this Topic version\s*$/.test(line)){inside=true;return}
+    if(inside&&/^##\s+/.test(line)){inside=false;return}
+    if(!inside)return;
+    var m=line.match(/^\s*-\s+\[[^\]]+\]\(([^)]+)\)\s*$/);
+    if(m)result.push(resolveLink(indexPath,m[1]));
+  });
+  if(!result.length)throw new Error("No clause links were found for "+topic.id+".");
+  return result;
+}
+function titleFromIndex(topic,text){
+  var m=text.match(/^#\s*(T\d+)\s+[—–-]\s*(.+)$/m);
+  return m&&m[1]===topic.id?"## "+topic.id+" — "+m[2].trim():"## "+topic.id+" — "+topic.title;
+}
+function nestedHeadings(text){
+  var fence="",lines=text.split(/\r?\n/);
+  return lines.map(function(line){
+    var trimmed=line.trim(),marker="";
+    if(trimmed.indexOf(String.fromCharCode(96).repeat(3))===0)marker=String.fromCharCode(96);
+    else if(trimmed.indexOf("~~~")===0)marker="~";
+    if(marker){if(!fence)fence=marker;else if(fence===marker)fence="";return line}
+    if(fence)return line;
+    return line.replace(/^(#{1,6})(\s+.*)$/,function(all,hashes,rest){return "#".repeat(Math.min(6,hashes.length+2))+rest});
+  }).join("\n").trim();
+}
+function clauseID(text,topic,path){
+  var m=text.match(/^#\s*(T\d+-C\d+)\b/m);
+  if(!m)throw new Error("No stable clause ID was found in "+path+".");
+  if(m[1].indexOf(topic.id+"-")!==0)throw new Error("Clause "+m[1]+" does not match Topic "+topic.id+".");
+  return m[1];
+}
+function atCommit(path,sha){
+  return getText(rawRoot+"/"+sha+"/"+path.split("/").map(encodeURIComponent).join("/"),path);
+}
+async function assemble(){
+  buildButton.disabled=true;downloadButton.disabled=true;preview.value="";details.textContent="";markdown="";
+  status("Reading the latest commit from GitHub.");
+  try{
+    var source=await getCommit();status("Reading the Master Record Index.");
+    var topics=topicsFromMRI(await atCommit(mriPath,source.sha)),ids=new Set(),sections=[],clauseCount=0;
+    for(var topic of topics){
+      status("Reading "+topic.id+" ("+topic.snapshot+").");
+      var indexText=await atCommit(topic.index,source.sha),paths=clausesFromIndex(topic,topic.index,indexText),clauses=[];
+      for(var path of paths){
+        var text=await atCommit(path,source.sha),id=clauseID(text,topic,path);
+        if(ids.has(id))throw new Error("Clause ID "+id+" appears more than once.");
+        ids.add(id);clauseCount++;
+        clauses.push("<!-- Source: "+path+" at "+source.sha+" -->\n"+nestedHeadings(text));
+      }
+      sections.push(titleFromIndex(topic,indexText)+"\n\n<!-- Topic snapshot: "+topic.snapshot+"; index: "+topic.index+" -->\n\n"+clauses.join("\n\n"));
+    }
+    var generated=timestamp(new Date());buildDate=generated.slice(0,10);
+    markdown=[
+      "# Western Cape Junior Squash Constitution","",
+      "> Working compilation of the latest Topic snapshots listed in the Master Record Index. This file does not by itself mean that the Constitution has been formally approved or adopted.","",
+      "**Assembled:** "+generated,
+      "**Source:** "+owner+"/"+repo+" on "+branch+" at "+source.sha+(source.date?" (source commit dated "+source.date+")":""),
+      "**Included:** "+topics.length+" Topics and "+clauseCount+" clauses, in MRI order.","","---","",
+      sections.join("\n\n---\n\n"),""
+    ].join("\n");
+    preview.value=markdown;details.textContent="Built from main at "+source.sha+". "+topics.length+" Topics and "+clauseCount+" clauses.";
+    status("Compilation complete. Review the preview, then download the Markdown file.","success");downloadButton.disabled=false;
+  }catch(error){status(error instanceof Error?error.message:"The Constitution could not be assembled.","error")}
+  finally{buildButton.disabled=false}
+}
+function download(){
+  if(!markdown)return;
+  var blob=new Blob([markdown],{type:"text/markdown;charset=utf-8"}),url=URL.createObjectURL(blob),link=document.createElement("a");
+  link.href=url;link.download="WPJS-ccc-working-"+(buildDate||"latest")+".md";
+  document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
+}
+buildButton.addEventListener("click",assemble);downloadButton.addEventListener("click",download);
+</script>
+</body>
+</html>
