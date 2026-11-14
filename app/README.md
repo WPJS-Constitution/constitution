@@ -1,20 +1,22 @@
 # WPJS Constitution Assembler
 
-Version 1 is a read-only JavaScript single-page application. It reads the current main-branch commit directly from GitHub, follows the Topic order in the Master Record Index, and assembles each Topic's linked clause files into a timestamped Markdown compilation.
-
-The assembler includes only clause files. It does not include Topic design notes or open questions. The downloaded file records the source commit ID and keeps hidden Markdown source comments for each clause, so the compiled wording can be traced back to its Topic file.
+This is a read-only JavaScript single-page application. It reads the repository directly from GitHub and assembles a timestamped Markdown file; it does not require a local clone.
 
 ## Run it
 
-The app has no build step and uses no external JavaScript packages. Once the app and source repository are publicly readable, open index.html in a modern browser and select **Assemble Markdown**. The app fetches one consistent commit snapshot, displays a preview, and lets you download the result as a .md file. No clone of the Constitution repository is needed.
+Open `index.html` in a modern browser after the app and source repository are publicly readable. The app lists **Current working draft** and any numbered edition records it finds. It uses GitHub's public read APIs and needs no token or external JavaScript package.
 
-The source repository is currently private. While it remains private, the no-login app cannot read its files from GitHub. It will report that public read access is unavailable. Repository visibility and main-branch protection must be handled before the app is put into public use.
+## What the choices mean
 
-## Version 1 boundaries
+- **Current working draft** follows the latest Topic snapshots in `register/master-record-index.md`, in MRI order. It can include ongoing, unclosed Topics.
+- **Constitution Version N** is listed when `versions/constitution-vN.md` exists. That edition record has a `# Constitution Version N` heading and a `## Topics` list containing every Topic ID. The edition index lists Topics only; its number implies the matching `VN` snapshot for each Topic.
+- For a numbered edition, the app reads `topics/<topic-folder>/VN/index.md` for each Topic, then assembles every clause linked under **Clauses in this Topic version**, in MRI order. It checks that the edition includes every Topic in the MRI and that each Topic index identifies the expected version.
 
-- Read-only: the app cannot change the repository or create a pull request.
-- The compilation uses the latest snapshot listed for each Topic in the MRI, whether or not that Topic is closed.
-- The output is a working compilation and does not mean that the Constitution has been approved or adopted.
-- A generation timestamp and the source commit SHA are included in the Markdown output.
+The app pins all reads to one `main` commit, includes its SHA and the local build timestamp in the output, and puts a hidden source-path comment before each clause for traceability. A missing Topic snapshot, missing clause, duplicate clause ID, or incomplete edition stops the build with an explanation.
 
-Version 2 may add a contribution form that submits proposed clause changes as a pull request. It must use a secure GitHub authentication flow and must not put a write token in the browser code. Repository branch protections must continue to require a pull request and the designated approval before anything reaches main.
+## Current repository state
+
+The repository currently has only `BASE` Topic snapshots and no numbered Constitution edition record. The selector will therefore offer the current working draft and report that no numbered editions have been recorded yet. It will list numbered editions as their edition indexes are added in future.
+
+The output is a compilation, not a decision that the Constitution has been formally approved or adopted. Version 1 is read-only. A future proposal-submission feature must use secure authentication and must never embed a GitHub write token in browser code.
+
