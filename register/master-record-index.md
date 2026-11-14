@@ -10,6 +10,7 @@ The topic map is still being developed. This is therefore an initial register, n
 | T02 | [Voting](../topics/T02-voting/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T03 | [Meetings](../topics/T03-meetings/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T04 | [Finances](../topics/T04-finances/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
+| T05 | [Intention](../topics/T05-intention/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 
 ## How to use this index
 
