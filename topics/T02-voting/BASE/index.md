@@ -9,7 +9,7 @@
 
 This BASE records the first independently developed starting point for the Voting topic. It is intended to make voting electronic, identifiable as a clear process, connected to membership, private in each member's choice, transparent in its aggregate count, and open only while further votes could change the result.
 
-No wording, rule, structure, or decision is inherited from a previous ccc.
+No wording, rule, structure, or decision is inherited from a previous Constitution.
 
 ## Clauses in this Topic version
 
@@ -25,7 +25,7 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 - [T02-C10 — Ties and revotes](T02-C10-ties-revotes.md)
 - [T02-C11 — Proxy votes](T02-C11-proxies.md)
 
-## Design notes (not proposed ccc clauses)
+## Design notes (not proposed Constitution clauses)
 
 - A proxy was considered. It is not included because electronic voting allows each member to cast their own vote without attending a meeting.
 - The option with the highest count wins. A strict majority is not required. This makes the closing test about whether any uncast vote could change which option has the highest count.
