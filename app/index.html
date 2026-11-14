@@ -1,172 +1,427 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WPJS Constitution Assembler</title>
-<style>
-:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17202a;background:#f3f6f8}
-*{box-sizing:border-box}body{margin:0}main{width:min(100% - 28px,1000px);margin:36px auto}
-header,section{background:#fff;border:1px solid #d5dde5;border-radius:12px;padding:24px;margin-bottom:16px}
-h1{margin:0 0 8px;font-size:2rem}h2{margin:0 0 14px;font-size:1.2rem}
-p{line-height:1.55}.lede,#details{color:#52616f}
-.notice{padding:10px 14px;background:#fff9e8;border-left:4px solid #c48b14}
-button{border:0;border-radius:8px;padding:11px 16px;font:inherit;font-weight:650;cursor:pointer;background:#145da0;color:white}
-button:disabled{opacity:.6;cursor:wait}.secondary{background:#e9f2fa;color:#0e477b}
-#status{min-height:1.5em;color:#52616f}#status.error{color:#a52a2a}#status.success{color:#176b48}
-textarea{display:block;width:100%;min-height:420px;resize:vertical;padding:14px;border:1px solid #d5dde5;border-radius:8px;font:13px/1.55 ui-monospace,Consolas,monospace}
-.controls{display:flex;gap:12px;flex-wrap:wrap}
-@media(max-width:600px){main{margin:14px auto}header,section{padding:17px}.controls button{width:100%}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>WPJS Constitution Assembler</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #52616f;
+      --line: #d5dde5;
+      --paper: #ffffff;
+      --ground: #f3f6f8;
+      --blue: #145da0;
+      --blue-dark: #0e477b;
+      --green: #176b48;
+      --red: #a52a2a;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--ground); color: var(--ink); }
+    main { width: min(100% - 32px, 1060px); margin: 40px auto; }
+    header, section { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+    header { padding: 28px 30px; margin-bottom: 18px; }
+    section { padding: 22px 24px; margin-top: 18px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.7rem, 4vw, 2.35rem); }
+    h2 { margin: 0 0 14px; font-size: 1.2rem; }
+    p { line-height: 1.55; }
+    .lede { color: var(--muted); margin: 0; max-width: 72ch; }
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    select { min-width: min(100%, 330px); padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--ink); font: inherit; }
+    button {
+      border: 0; border-radius: 8px; padding: 11px 17px; font: inherit;
+      font-weight: 650; cursor: pointer; color: white; background: var(--blue);
+    }
+    button:hover:not(:disabled) { background: var(--blue-dark); }
+    button:disabled { cursor: wait; opacity: .62; }
+    button.secondary { color: var(--blue-dark); background: #e9f2fa; }
+    button.secondary:hover:not(:disabled) { background: #d8eafa; }
+    #status { min-height: 1.5em; color: var(--muted); margin: 14px 0 0; }
+    #status[data-kind="error"] { color: var(--red); }
+    #status[data-kind="success"] { color: var(--green); }
+    .meta { color: var(--muted); font-size: .92rem; }
+    .meta code { overflow-wrap: anywhere; }
+    textarea {
+      display: block; width: 100%; min-height: 420px; resize: vertical;
+      padding: 14px; border: 1px solid var(--line); border-radius: 8px;
+      background: #fbfcfd; color: var(--ink); font: 13px/1.55 ui-monospace, SFMono-Regular, Consolas, monospace;
+    }
+    .notice { padding: 11px 14px; border-left: 4px solid #c48b14; background: #fff9e8; color: #55420f; }
+    footer { margin: 18px 2px; color: var(--muted); font-size: .88rem; }
+    @media (max-width: 600px) {
+      main { width: min(100% - 20px, 1060px); margin: 18px auto; }
+      header, section { padding: 18px; }
+      .controls button { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-<main>
-<header><h1>WPJS Constitution Assembler</h1>
-<p class="lede">Build a readable Markdown compilation from the latest Topic snapshots in the Master Record Index. The app reads GitHub directly; you do not need to clone the repository.</p></header>
-<section>
-<h2>Assemble the current working ccc</h2>
-<p class="notice">This is a working compilation. It does not by itself mean the Constitution has been approved or adopted.</p>
-<div class="controls"><button id="build">Assemble Markdown</button><button id="download" class="secondary" disabled>Download .md</button></div>
-<p id="status" role="status" aria-live="polite">Ready. This no-login version needs the source repository to be publicly readable.</p><p id="details"></p>
-</section>
-<section><h2>Preview</h2><textarea id="preview" readonly spellcheck="false" aria-label="Compiled Constitution Markdown" placeholder="Your assembled Markdown will appear here."></textarea></section>
-<p class="lede">Version 1 is read-only. It follows MRI order, includes each linked clause, and records the build time and source commit.</p>
-</main>
-<script>
-"use strict";
-var owner="WPJS-Constitution", repo="constitution", branch="main";
-var mriPath="register/master-record-index.md";
-var apiRoot="https://api.github.com/repos/"+owner+"/"+repo;
-var rawRoot="https://raw.githubusercontent.com/"+owner+"/"+repo;
-var buildButton=document.getElementById("build"),downloadButton=document.getElementById("download");
-var statusBox=document.getElementById("status"),details=document.getElementById("details"),preview=document.getElementById("preview");
-var markdown="",buildDate="";
-function status(text,kind){statusBox.textContent=text;statusBox.className=kind||""}
-function timestamp(date){
-  function pad(n){return String(n).padStart(2,"0")}
-  var offset=-date.getTimezoneOffset(),sign=offset>=0?"+":"-",abs=Math.abs(offset);
-  return date.getFullYear()+"-"+pad(date.getMonth()+1)+"-"+pad(date.getDate())+"T"+
-    pad(date.getHours())+":"+pad(date.getMinutes())+":"+pad(date.getSeconds())+
-    sign+pad(Math.floor(abs/60))+":"+pad(abs%60);
-}
-async function getText(url,label){
-  var response;
-  try{response=await fetch(url,{cache:"no-store"})}
-  catch(e){throw new Error("Could not reach GitHub while reading "+label+". Check your internet connection.")}
-  if(!response.ok){
-    if(response.status===404)throw new Error("GitHub cannot find "+label+". The repository or file may not be publicly readable yet.");
-    if(response.status===403||response.status===429)throw new Error("GitHub temporarily refused the request for "+label+". Wait a little, then try again.");
-    throw new Error("GitHub returned "+response.status+" while reading "+label+".");
-  }
-  return response.text();
-}
-async function getCommit(){
-  var response;
-  try{response=await fetch(apiRoot+"/commits/"+branch,{headers:{Accept:"application/vnd.github+json"},cache:"no-store"})}
-  catch(e){throw new Error("Could not reach GitHub to identify the latest main-branch commit.")}
-  if(response.status===404)throw new Error("The repository is not publicly readable. This version needs public read access so people can use the SPA without signing in or cloning.");
-  if(response.status===403||response.status===429)throw new Error("GitHub’s unauthenticated request limit was reached. Wait a little, then try again.");
-  if(!response.ok)throw new Error("Could not identify the latest main-branch commit (GitHub returned "+response.status+").");
-  var data=await response.json();
-  if(!data.sha)throw new Error("GitHub did not return a source commit ID.");
-  return {sha:data.sha,date:(data.commit&&data.commit.committer&&data.commit.committer.date)||""};
-}
-function resolveLink(baseFile,target){
-  var path=target.trim().replace(/^<|>$/g,"").split(/[?#]/,1)[0];
-  if(!path||/^(https?:|mailto:|\/)/i.test(path))throw new Error("Expected a relative Markdown link in "+baseFile+".");
-  var parts=baseFile.split("/").slice(0,-1);
-  path.split("/").forEach(function(part){
-    if(!part||part===".")return;
-    if(part===".."){if(!parts.length)throw new Error("A Markdown link points outside the repository.");parts.pop()}
-    else parts.push(part);
-  });
-  var result=parts.join("/");
-  if(!/\.md$/i.test(result))throw new Error("Expected a Markdown file link in "+baseFile+".");
-  return result;
-}
-function topicsFromMRI(text){
-  var result=[],seen=new Set(),row=/^\|\s*(T\d+)\s*\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)\|/;
-  text.split(/\r?\n/).forEach(function(line){
-    var m=line.match(row);if(!m)return;
-    if(seen.has(m[1]))throw new Error("The MRI lists "+m[1]+" more than once.");
-    seen.add(m[1]);result.push({id:m[1],title:m[2].trim(),snapshot:m[4].trim(),index:resolveLink(mriPath,m[3])});
-  });
-  if(!result.length)throw new Error("No Topic rows were found in the Master Record Index.");
-  return result;
-}
-function clausesFromIndex(topic,indexPath,text){
-  var result=[],inside=false;
-  text.split(/\r?\n/).forEach(function(line){
-    if(/^##\s+Clauses in this Topic version\s*$/.test(line)){inside=true;return}
-    if(inside&&/^##\s+/.test(line)){inside=false;return}
-    if(!inside)return;
-    var m=line.match(/^\s*-\s+\[[^\]]+\]\(([^)]+)\)\s*$/);
-    if(m)result.push(resolveLink(indexPath,m[1]));
-  });
-  if(!result.length)throw new Error("No clause links were found for "+topic.id+".");
-  return result;
-}
-function titleFromIndex(topic,text){
-  var m=text.match(/^#\s*(T\d+)\s+[—–-]\s*(.+)$/m);
-  return m&&m[1]===topic.id?"## "+topic.id+" — "+m[2].trim():"## "+topic.id+" — "+topic.title;
-}
-function nestedHeadings(text){
-  var fence="",lines=text.split(/\r?\n/);
-  return lines.map(function(line){
-    var trimmed=line.trim(),marker="";
-    if(trimmed.indexOf(String.fromCharCode(96).repeat(3))===0)marker=String.fromCharCode(96);
-    else if(trimmed.indexOf("~~~")===0)marker="~";
-    if(marker){if(!fence)fence=marker;else if(fence===marker)fence="";return line}
-    if(fence)return line;
-    return line.replace(/^(#{1,6})(\s+.*)$/,function(all,hashes,rest){return "#".repeat(Math.min(6,hashes.length+2))+rest});
-  }).join("\n").trim();
-}
-function clauseID(text,topic,path){
-  var m=text.match(/^#\s*(T\d+-C\d+)\b/m);
-  if(!m)throw new Error("No stable clause ID was found in "+path+".");
-  if(m[1].indexOf(topic.id+"-")!==0)throw new Error("Clause "+m[1]+" does not match Topic "+topic.id+".");
-  return m[1];
-}
-function atCommit(path,sha){
-  return getText(rawRoot+"/"+sha+"/"+path.split("/").map(encodeURIComponent).join("/"),path);
-}
-async function assemble(){
-  buildButton.disabled=true;downloadButton.disabled=true;preview.value="";details.textContent="";markdown="";
-  status("Reading the latest commit from GitHub.");
-  try{
-    var source=await getCommit();status("Reading the Master Record Index.");
-    var topics=topicsFromMRI(await atCommit(mriPath,source.sha)),ids=new Set(),sections=[],clauseCount=0;
-    for(var topic of topics){
-      status("Reading "+topic.id+" ("+topic.snapshot+").");
-      var indexText=await atCommit(topic.index,source.sha),paths=clausesFromIndex(topic,topic.index,indexText),clauses=[];
-      for(var path of paths){
-        var text=await atCommit(path,source.sha),id=clauseID(text,topic,path);
-        if(ids.has(id))throw new Error("Clause ID "+id+" appears more than once.");
-        ids.add(id);clauseCount++;
-        clauses.push("<!-- Source: "+path+" at "+source.sha+" -->\n"+nestedHeadings(text));
-      }
-      sections.push(titleFromIndex(topic,indexText)+"\n\n<!-- Topic snapshot: "+topic.snapshot+"; index: "+topic.index+" -->\n\n"+clauses.join("\n\n"));
+  <main>
+    <header>
+      <h1>WPJS Constitution Assembler</h1>
+      <p class="lede">Choose a numbered Constitution edition or the current working draft. The app reads the source directly from GitHub; no repository clone is needed.</p>
+    </header>
+
+    <section aria-labelledby="build-heading">
+      <h2 id="build-heading">Choose what to assemble</h2>
+      <p class="notice">This is a working compilation, not by itself an approved or adopted Constitution.</p>
+      <div class="controls">
+        <label for="edition-select">Edition</label>
+        <select id="edition-select" disabled><option>Checking GitHub for available editions…</option></select>
+        <button id="assemble-button" type="button" disabled>Assemble Markdown</button>
+        <button id="download-button" class="secondary" type="button" disabled>Download .md</button>
+      </div>
+      <p id="status" role="status" aria-live="polite">Checking GitHub for the current draft and numbered editions…</p>
+      <p id="source-meta" class="meta"></p>
+    </section>
+
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading">Preview</h2>
+      <textarea id="preview" aria-label="Compiled Constitution Markdown preview" readonly spellcheck="false" placeholder="Your assembled Markdown will appear here."></textarea>
+    </section>
+
+    <footer>The numbered edition index identifies the Topics in an edition; the edition number identifies the matching Topic snapshot for each. The app downloads every linked Clause from those snapshots.</footer>
+  </main>
+
+  <script>
+    "use strict";
+
+    const OWNER = "WPJS-Constitution";
+    const REPOSITORY = "constitution";
+    const BRANCH = "main";
+    const MRI_PATH = "register/master-record-index.md";
+    const API_ROOT = `https://api.github.com/repos/${OWNER}/${REPOSITORY}`;
+    const RAW_ROOT = `https://raw.githubusercontent.com/${OWNER}/${REPOSITORY}`;
+
+    const assembleButton = document.getElementById("assemble-button");
+    const editionSelect = document.getElementById("edition-select");
+    const downloadButton = document.getElementById("download-button");
+    const statusElement = document.getElementById("status");
+    const sourceMeta = document.getElementById("source-meta");
+    const preview = document.getElementById("preview");
+    let compiledMarkdown = "";
+    let outputDate = "";
+    let editionFiles = new Map();
+
+    function setStatus(message, kind = "info") {
+      statusElement.textContent = message;
+      statusElement.dataset.kind = kind;
     }
-    var generated=timestamp(new Date());buildDate=generated.slice(0,10);
-    markdown=[
-      "# Western Cape Junior Squash Constitution","",
-      "> Working compilation of the latest Topic snapshots listed in the Master Record Index. This file does not by itself mean that the Constitution has been formally approved or adopted.","",
-      "**Assembled:** "+generated,
-      "**Source:** "+owner+"/"+repo+" on "+branch+" at "+source.sha+(source.date?" (source commit dated "+source.date+")":""),
-      "**Included:** "+topics.length+" Topics and "+clauseCount+" clauses, in MRI order.","","---","",
-      sections.join("\n\n---\n\n"),""
-    ].join("\n");
-    preview.value=markdown;details.textContent="Built from main at "+source.sha+". "+topics.length+" Topics and "+clauseCount+" clauses.";
-    status("Compilation complete. Review the preview, then download the Markdown file.","success");downloadButton.disabled=false;
-  }catch(error){status(error instanceof Error?error.message:"The Constitution could not be assembled.","error")}
-  finally{buildButton.disabled=false}
-}
-function download(){
-  if(!markdown)return;
-  var blob=new Blob([markdown],{type:"text/markdown;charset=utf-8"}),url=URL.createObjectURL(blob),link=document.createElement("a");
-  link.href=url;link.download="WPJS-ccc-working-"+(buildDate||"latest")+".md";
-  document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
-}
-buildButton.addEventListener("click",assemble);downloadButton.addEventListener("click",download);
-</script>
+
+    function localTimestamp(date) {
+      const pad = value => String(value).padStart(2, "0");
+      const offsetMinutes = -date.getTimezoneOffset();
+      const sign = offsetMinutes >= 0 ? "+" : "-";
+      const offset = Math.abs(offsetMinutes);
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}${sign}${pad(Math.floor(offset / 60))}:${pad(offset % 60)}`;
+    }
+
+    async function fetchText(url, description) {
+      let response;
+      try {
+        response = await fetch(url, { headers: { "Accept": "application/vnd.github+json" }, cache: "no-store" });
+      } catch (error) {
+        throw new Error(`Could not reach GitHub while reading ${description}. Check your internet connection and try again.`);
+      }
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error(`GitHub could not find ${description}. The repository or file may not be publicly readable yet.`);
+        }
+        if (response.status === 403 || response.status === 429) {
+          throw new Error(`GitHub temporarily refused the request for ${description}. Please wait a little and try again.`);
+        }
+        throw new Error(`GitHub returned ${response.status} while reading ${description}.`);
+      }
+      return response.text();
+    }
+
+    async function getSourceCommit() {
+      const response = await fetch(`${API_ROOT}/commits/${BRANCH}`, {
+        headers: { "Accept": "application/vnd.github+json" },
+        cache: "no-store"
+      });
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("The repository is not publicly readable. Version 1 needs public read access so people can use the SPA without signing in or cloning the repository.");
+        }
+        if (response.status === 403 || response.status === 429) {
+          throw new Error("GitHub’s unauthenticated request limit was reached. Please wait and try again.");
+        }
+        throw new Error(`Could not identify the latest main-branch commit (GitHub returned ${response.status}).`);
+      }
+      const commit = await response.json();
+      if (!commit.sha) throw new Error("GitHub did not return a source commit ID.");
+      return { sha: commit.sha, committedAt: commit.commit?.committer?.date || "" };
+    }
+
+    async function getEditionFiles(sha) {
+      const response = await fetch(`${API_ROOT}/contents/versions?ref=${encodeURIComponent(sha)}`, {
+        headers: { "Accept": "application/vnd.github+json" }, cache: "no-store"
+      });
+      if (!response.ok) throw new Error(`Could not list the edition records (GitHub returned ${response.status}).`);
+      const entries = await response.json();
+      return entries.filter(item => item.type === "file" && /^constitution-v\d+\.md$/i.test(item.name)).map(item => item.path);
+    }
+
+    async function loadEditionChoices() {
+      try {
+        const source = await getSourceCommit();
+        const paths = await getEditionFiles(source.sha);
+        editionFiles = new Map(paths.map(path => [Number(path.match(/constitution-v(\d+)\.md$/i)[1]), path]));
+        editionSelect.replaceChildren();
+        editionSelect.add(new Option("Current working draft (latest MRI snapshots)", "current"));
+        [...editionFiles.keys()].sort((a, b) => a - b).forEach(version => {
+          editionSelect.add(new Option(`Constitution Version ${version}`, String(version)));
+        });
+        if (editionFiles.size === 0) {
+          editionSelect.add(new Option("No numbered editions recorded yet", "none"));
+          editionSelect.options[1].disabled = true;
+        }
+        editionSelect.disabled = false;
+        assembleButton.disabled = false;
+        setStatus(editionFiles.size
+          ? `Found ${editionFiles.size} numbered Constitution edition${editionFiles.size === 1 ? "" : "s"}, plus the current working draft.`
+          : "No numbered Constitution editions have been recorded yet. You can still assemble the current working draft.");
+      } catch (error) {
+        editionSelect.replaceChildren(new Option("Could not load editions", "error"));
+        setStatus(error instanceof Error ? error.message : "Could not load the edition list.", "error");
+      }
+    }
+
+    function resolveMarkdownLink(baseFile, target) {
+      const cleanTarget = target.trim().replace(/^<|>$/g, "").split(/[?#]/, 1)[0];
+      if (!cleanTarget || /^(?:https?:|mailto:|\/)/i.test(cleanTarget)) {
+        throw new Error(`Expected a relative Markdown file link in ${baseFile}, but found “${target}”.`);
+      }
+      const stack = baseFile.split("/").slice(0, -1);
+      for (const part of cleanTarget.split("/")) {
+        if (!part || part === ".") continue;
+        if (part === "..") {
+          if (stack.length === 0) throw new Error(`A link in ${baseFile} points outside the repository.`);
+          stack.pop();
+        } else {
+          stack.push(part);
+        }
+      }
+      const path = stack.join("/");
+      if (!path.toLowerCase().endsWith(".md")) {
+        throw new Error(`Expected a Markdown file link in ${baseFile}, but found “${target}”.`);
+      }
+      return path;
+    }
+
+    function readTopicsFromMRI(mri) {
+      const topics = [];
+      const rowPattern = /^\|\s*(T\d+)\s*\|\s*\[([^\]]+)\]\(([^)]+)\)\s*\|\s*([^|]+)\|/;
+      for (const line of mri.split(/\r?\n/)) {
+        const match = line.match(rowPattern);
+        if (!match) continue;
+        const [, id, title, link, snapshot] = match;
+        const indexPath = resolveMarkdownLink(MRI_PATH, link);
+        const topicFolder = indexPath.replace(/\/[^/]+\/index\.md$/i, "");
+        if (topicFolder === indexPath) throw new Error(`Could not identify the Topic folder from the MRI link for ${id}.`);
+        topics.push({ id, title: title.trim(), snapshot: snapshot.trim(), indexPath, topicFolder });
+      }
+      if (topics.length === 0) throw new Error("No Topic rows were found in the Master Record Index.");
+      const seen = new Set();
+      for (const topic of topics) {
+        if (seen.has(topic.id)) throw new Error(`The MRI lists ${topic.id} more than once.`);
+        seen.add(topic.id);
+      }
+      return topics;
+    }
+
+    function readClausePaths(topicId, indexPath, indexText) {
+      const clausePaths = [];
+      let inClauseSection = false;
+      for (const line of indexText.split(/\r?\n/)) {
+        if (/^##\s+Clauses in this Topic version\s*$/.test(line)) {
+          inClauseSection = true;
+          continue;
+        }
+        if (inClauseSection && /^##\s+/.test(line)) break;
+        if (!inClauseSection) continue;
+        const match = line.match(/^\s*-\s+\[[^\]]+\]\(([^)]+)\)\s*$/);
+        if (match) clausePaths.push(resolveMarkdownLink(indexPath, match[1]));
+      }
+      if (clausePaths.length === 0) throw new Error(`No clause links were found for ${topicId} in its Topic index.`);
+      return clausePaths;
+    }
+
+    function topicHeading(topicId, indexText, fallbackTitle) {
+      const firstHeading = indexText.match(/^#\s*(T\d+)\s+[—–-]\s*(.+)$/m);
+      if (firstHeading && firstHeading[1] === topicId) return `## ${topicId} — ${firstHeading[2].trim()}`;
+      return `## ${topicId} — ${fallbackTitle}`;
+    }
+
+    function shiftHeadings(markdown, amount = 2) {
+      let fence = "";
+      return markdown.split(/\r?\n/).map(line => {
+        const fenceLine = line.match(/^\s*(`{3,}|~{3,})/);
+        if (fenceLine) {
+          const marker = fenceLine[1][0];
+          if (!fence) fence = marker;
+          else if (fence === marker) fence = "";
+          return line;
+        }
+        if (fence) return line;
+        return line.replace(/^(#{1,6})(\s+.*)$/, (_, hashes, rest) => `${"#".repeat(Math.min(6, hashes.length + amount))}${rest}`);
+      }).join("\n").trim();
+    }
+
+    function extractClauseId(markdown, topicId, path) {
+      const match = markdown.match(/^#\s*(T\d+-C\d+)\b/m);
+      if (!match) throw new Error(`The clause file ${path} has no stable heading ID.`);
+      if (!match[1].startsWith(`${topicId}-`)) {
+        throw new Error(`The clause ID ${match[1]} in ${path} does not match ${topicId}.`);
+      }
+      return match[1];
+    }
+
+    function readEditionTopics(markdown, version) {
+      const heading = markdown.match(/^#\s+Constitution Version\s+(\d+)\s*$/im);
+      if (!heading || Number(heading[1]) !== version) throw new Error(`The edition record does not identify Constitution Version ${version}.`);
+      const sectionHeading = markdown.match(/^##\s+Topics\s*$/im);
+      if (!sectionHeading || sectionHeading.index === undefined) throw new Error(`The Constitution Version ${version} record has no “Topics” list.`);
+      const afterHeading = markdown.slice(sectionHeading.index + sectionHeading[0].length);
+      const nextHeading = afterHeading.search(/^##\s+/m);
+      const topicText = nextHeading < 0 ? afterHeading : afterHeading.slice(0, nextHeading);
+      const ids = [...topicText.matchAll(/^\s*-\s*(T\d+)\b/gm)].map(match => match[1]);
+      if (!ids.length) throw new Error(`The Constitution Version ${version} record lists no Topics.`);
+      if (new Set(ids).size !== ids.length) throw new Error(`The Constitution Version ${version} record lists a Topic more than once.`);
+      return ids;
+    }
+
+    function topicVersionPath(topic, version) {
+      return `${topic.topicFolder}/V${version}/index.md`;
+    }
+
+    function validateEditionTopicSet(editionIds, mriTopics, version) {
+      const mriIds = mriTopics.map(topic => topic.id);
+      const missing = mriIds.filter(id => !editionIds.includes(id));
+      const unknown = editionIds.filter(id => !mriIds.includes(id));
+      if (missing.length || unknown.length) {
+        const details = [missing.length ? `missing from the edition record: ${missing.join(", ")}` : "", unknown.length ? `not in the MRI: ${unknown.join(", ")}` : ""].filter(Boolean).join("; ");
+        throw new Error(`Constitution Version ${version} is not complete (${details}). Update the edition record and MRI before assembling it.`);
+      }
+    }
+
+    async function fetchAtCommit(path, sha) {
+      return fetchText(`${RAW_ROOT}/${sha}/${path.split("/").map(encodeURIComponent).join("/")}`, path);
+    }
+
+    async function assemble() {
+      assembleButton.disabled = true;
+      downloadButton.disabled = true;
+      preview.value = "";
+      sourceMeta.textContent = "";
+      compiledMarkdown = "";
+      setStatus("Reading the latest commit from GitHub…");
+
+      try {
+        const source = await getSourceCommit();
+        const freshEditionPaths = await getEditionFiles(source.sha);
+        editionFiles = new Map(freshEditionPaths.map(path => [Number(path.match(/constitution-v(\d+)\.md$/i)[1]), path]));
+        setStatus("Reading the Master Record Index…");
+        const mri = await fetchAtCommit(MRI_PATH, source.sha);
+        const topics = readTopicsFromMRI(mri);
+        const selectedVersion = editionSelect.value;
+        if (selectedVersion === "none" || selectedVersion === "error") throw new Error("Select an available edition before assembling.");
+        const isNumberedEdition = selectedVersion !== "current";
+        const version = isNumberedEdition ? Number(selectedVersion) : null;
+        if (isNumberedEdition) {
+          const editionPath = editionFiles.get(version);
+          if (!editionPath) throw new Error(`Constitution Version ${version} is no longer listed. Reload the page and try again.`);
+          setStatus(`Reading the Constitution Version ${version} index…`);
+          const editionIds = readEditionTopics(await fetchAtCommit(editionPath, source.sha), version);
+          validateEditionTopicSet(editionIds, topics, version);
+          topics.forEach(topic => {
+            topic.snapshot = `V${version}`;
+            topic.indexPath = topicVersionPath(topic, version);
+          });
+        }
+        const allClauseIds = new Set();
+        const sections = [];
+        let topicCount = 0;
+        let clauseCount = 0;
+
+        for (const topic of topics) {
+          setStatus(`Reading ${topic.id} (${topic.snapshot})…`);
+          const indexText = await fetchAtCommit(topic.indexPath, source.sha);
+          if (isNumberedEdition) {
+            const versionLine = indexText.match(/^\*\*Topic version:\*\*\s*([^\s]+)\s*$/m);
+            if (!versionLine || versionLine[1] !== `V${version}`) {
+              throw new Error(`${topic.id} does not contain a V${version} snapshot, so this Constitution edition is incomplete.`);
+            }
+          }
+          const clausePaths = readClausePaths(topic.id, topic.indexPath, indexText);
+          const clauses = [];
+
+          for (const clausePath of clausePaths) {
+            const clauseText = await fetchAtCommit(clausePath, source.sha);
+            const clauseId = extractClauseId(clauseText, topic.id, clausePath);
+            if (allClauseIds.has(clauseId)) throw new Error(`The clause ID ${clauseId} appears more than once in the MRI topics.`);
+            allClauseIds.add(clauseId);
+            clauses.push(`<!-- Source: ${clausePath} at ${source.sha} -->\n${shiftHeadings(clauseText)}`);
+            clauseCount++;
+          }
+
+          sections.push(`${topicHeading(topic.id, indexText, topic.title)}\n\n<!-- Topic snapshot: ${topic.snapshot}; index: ${topic.indexPath} -->\n\n${clauses.join("\n\n")}`);
+          topicCount++;
+        }
+
+        const generatedAt = localTimestamp(new Date());
+        outputDate = generatedAt.slice(0, 10);
+        compiledMarkdown = [
+          "# Western Cape Junior Squash Constitution",
+          "",
+          isNumberedEdition
+            ? `> Compilation of Constitution Version ${version}, assembled from its matching Topic snapshots. This file does not by itself mean that the Constitution has been formally approved or adopted.`
+            : "> Working compilation of the latest Topic snapshots listed in the Master Record Index. This file does not by itself mean that the Constitution has been formally approved or adopted.",
+          "",
+          isNumberedEdition ? `**Constitution edition:** Version ${version}` : "**Constitution edition:** Current working draft",
+          `**Assembled:** ${generatedAt}`,
+          `**Source:** \`${OWNER}/${REPOSITORY}\` on \`${BRANCH}\` at \`${source.sha}\`${source.committedAt ? ` (source commit dated ${source.committedAt})` : ""}`,
+          `**Included:** ${topicCount} Topics and ${clauseCount} clauses, in MRI order.`,
+          "",
+          "---",
+          "",
+          sections.join("\n\n---\n\n"),
+          ""
+        ].join("\n");
+
+        preview.value = compiledMarkdown;
+        sourceMeta.textContent = `Built from main at ${source.sha}. ${topicCount} Topics and ${clauseCount} clauses.`;
+        setStatus("Compilation complete. Review the preview, then download the Markdown file.", "success");
+        downloadButton.disabled = false;
+      } catch (error) {
+        setStatus(error instanceof Error ? error.message : "The Constitution could not be assembled.", "error");
+      } finally {
+        assembleButton.disabled = false;
+      }
+    }
+
+    function downloadMarkdown() {
+      if (!compiledMarkdown) return;
+      const blob = new Blob([compiledMarkdown], { type: "text/markdown;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      const editionName = editionSelect.value === "current" ? "working" : `v${editionSelect.value}`;
+      link.download = `WPJS-ccc-${editionName}-${outputDate || "latest"}.md`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    assembleButton.addEventListener("click", assemble);
+    downloadButton.addEventListener("click", downloadMarkdown);
+    loadEditionChoices();
+  </script>
 </body>
 </html>
+
