@@ -9,7 +9,7 @@
 
 This BASE records the first independently developed starting point for the Finances topic. It is intended to protect WPJS’s funds while allowing Operations to carry out the work needed to keep junior squash running.
 
-No wording, rule, structure, or decision is inherited from a previous ccc.
+No wording, rule, structure, or decision is inherited from a previous Constitution.
 
 ## Clauses in this Topic version
 
@@ -25,7 +25,7 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 - [T04-C10 — Chair oversight when the Treasurer is removed](T04-C10-chair-oversight.md)
 - [T04-C11 — Fees must be based on a budget](T04-C11-fee-budgets.md)
 
-## Design notes (not proposed ccc clauses)
+## Design notes (not proposed Constitution clauses)
 
 - Operations does not require an approved operating budget. Its spending authority is guided by the funds available and the likely costs of continuing its work.
 - The 5% threshold is a trigger for discussion of a proposed payment or commitment, not a fixed rand cap or automatic spending approval or prohibition.
