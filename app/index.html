@@ -183,14 +183,15 @@
         const tags = await getEditionTags();
         editionTags = new Map(tags.map(tag => [tag.version, tag]));
         editionSelect.replaceChildren();
-        editionSelect.add(new Option("Current working draft (latest MRI snapshots)", "current"));
         [...editionTags.values()].sort((a, b) => a.version - b.version).forEach(tag => {
-          editionSelect.add(new Option(`Constitution Version ${tag.version}`, String(tag.version)));
+          editionSelect.add(new Option(`ccc-v${tag.version} — Constitution Version ${tag.version}`, String(tag.version)));
         });
         if (editionTags.size === 0) {
           editionSelect.add(new Option("No numbered editions recorded yet", "none"));
-          editionSelect.options[1].disabled = true;
+          editionSelect.options[0].disabled = true;
         }
+        editionSelect.add(new Option("Current working draft (main)", "current"));
+        editionSelect.value = "current";
         editionSelect.disabled = false;
         assembleButton.disabled = false;
         setStatus(editionTags.size
