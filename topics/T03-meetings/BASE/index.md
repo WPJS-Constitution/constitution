@@ -9,7 +9,7 @@
 
 This BASE records the first independently developed starting point for the Meetings topic. Meetings exist for debate and discussion, while decisions are made through the electronic voting process. The Annual General Meeting also provides the annual reporting required for WPJS's accountability and external compliance.
 
-No wording, rule, structure, or decision is inherited from a previous ccc.
+No wording, rule, structure, or decision is inherited from a previous Constitution.
 
 ## Clauses in this Topic version
 
@@ -34,14 +34,14 @@ No wording, rule, structure, or decision is inherited from a previous ccc.
 
 This Topic applies the project-wide principle [“Governance is not a Thoroughbred; it is a Clydesdale”](../../../design-principles.md): meetings make space for considered discussion; they do not provide a shortcut to a decision.
 
-## Design notes (not proposed ccc clauses)
+## Design notes (not proposed Constitution clauses)
 
 - The AGM must take place within 30 days of the financial year end; incomplete annual reporting is not a reason to postpone it.
 - Financial period, minimum financial-reporting requirements, and financial record-keeping belong in a separate Financial Topic. A February year-end remains the working proposal for that Topic.
 - Financial Topic seed: all fees charged to members must be based on a budget. WPJS does not currently prepare an annual budget, so the Financial Topic must address how a budget is prepared for that purpose.
 - Financial Topic seed: financial records should be current to within the last 48 hours, with no money unaccounted for longer than 48 hours.
 - Whether incomplete annual reporting prevents electronic voting belongs in the Voting Topic, not the Meetings Topic.
-- If an external relationship brings additional reporting or governance requirements beyond the ccc, the requirements are to be disclosed and approved through an electronic vote before WPJS accepts that relationship.
+- If an external relationship brings additional reporting or governance requirements beyond the Constitution, the requirements are to be disclosed and approved through an electronic vote before WPJS accepts that relationship.
 - Email is the current method for electronic meeting notices; the method is policy detail, but electronic delivery and verification are constitutional requirements.
 - Policies may add implementation detail but must not weaken, waive, or postpone any requirement in this Topic.
 

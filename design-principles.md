@@ -1,6 +1,6 @@
 # Project-wide Design Principles
 
-These principles explain the intentions behind the developing ccc. They guide Topic drafting but are not themselves constitutional clauses unless adopted as clauses in a Topic.
+These principles explain the intentions behind the developing Constitution. They guide Topic drafting but are not themselves constitutional clauses unless adopted as clauses in a Topic.
 
 ## Deliberate governance
 
