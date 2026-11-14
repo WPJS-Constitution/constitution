@@ -68,7 +68,7 @@
     @media print {
       body { background: white; color: #111; }
       main { width: 100%; margin: 0; }
-      header, .build-section, footer, .tabs, #raw-panel, #status, #source-meta { display: none !important; }
+      header, .build-section, footer, .tabs, #output-heading, #raw-panel, #status, #source-meta { display: none !important; }
       section { padding: 0; margin: 0; border: 0; border-radius: 0; }
       #rendered-output { min-height: 0; padding: 0; border: 0; overflow: visible; }
       .markdown-body { font-size: 10.5pt; line-height: 1.45; }
@@ -549,6 +549,7 @@ function a(e,t){return n(e)||r(e,t)||o(e,t)||i()}function o(e,n){if(e){if(typeof
         rawMarkdown.value = compiledMarkdown;
         const renderedHtml = marked.parse(compiledMarkdown, { gfm: true, breaks: false });
         renderedOutput.innerHTML = DOMPurify.sanitize(renderedHtml, {
+          USE_PROFILES: { html: true },
           FORBID_TAGS: ["audio", "iframe", "img", "object", "script", "style", "video"],
           FORBID_ATTR: ["style"]
         });
