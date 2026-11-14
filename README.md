@@ -43,6 +43,7 @@ Every outcome needs topic-level development, consistency review, and the require
 - [First Topic — BASE index](topics/T01-purpose-role-authority/BASE/index.md)
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
+- [Finances — BASE index](topics/T04-finances/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current ccc status](versions/current-status.md)
 
@@ -50,7 +51,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The first three Topics—**Purpose, Role and Authority of the ccc**, **Voting**, and **Meetings**—are in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
+The first four Topics—**Purpose, Role and Authority of the ccc**, **Voting**, **Meetings**, and **Finances**—are in progress at BASE. No numbered ccc edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
