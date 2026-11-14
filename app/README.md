@@ -1,12 +1,12 @@
 # WPJS Constitution Assembler
 
-This is a read-only JavaScript single-page application. It reads the repository directly from GitHub and assembles a timestamped Markdown file; it does not require a local clone.
+This is a read-only JavaScript single-page application. It reads the repository directly from GitHub and assembles a timestamped Markdown file with a rendered preview and print-to-PDF option; it does not require a local clone.
 
 ## Run it
 
-Open `index.html` in a modern browser after the app and source repository are publicly readable. The app lists **Current working draft** and any numbered Constitution tags it finds. It uses GitHub's public read APIs and needs no token or external JavaScript package.
+Open `index.html` in a modern browser after the app and source repository are publicly readable. The app lists **Current working draft** and any numbered Constitution tags it finds. It uses GitHub's public read APIs and needs no token, build step, or external CDN. The single HTML file bundles Marked 18.0.13 for Markdown rendering and DOMPurify 3.4.17 to sanitize rendered HTML; see `THIRD-PARTY-LICENSES.md` for their licenses.
 
-## What the choices mean
+## Preview, Markdown download, and PDF\n\nAfter assembling, use the **Preview** and **Raw Markdown** tabs to switch between the rendered Constitution and the exact Markdown source. **Download .md** saves the source file. **Print to PDF** opens the browser print dialog; choose **Save as PDF** there. The print layout contains only the rendered Constitution and its assembled timestamp and source details.\n\nThe Markdown renderer and HTML sanitizer are pinned and bundled inside `index.html`, so the app remains a single-file download and does not load either library from a CDN.\n\n## What the choices mean
 
 - **Current working draft** reads the latest `main` commit and follows the Topic snapshots in `register/master-record-index.md`, in MRI order. It can include ongoing, unclosed Topics.
 - **Constitution Version N** is listed when the repository has a tag named `ccc-vN`. The tag points to the exact commit for that frozen edition. At that commit, `versions/constitution-vN.md` has a `# Constitution Version N` heading and a `## Topics` list containing every Topic ID. The edition index lists Topics only; its number implies the matching `VN` snapshot for each Topic.
