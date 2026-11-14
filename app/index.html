@@ -104,7 +104,7 @@
     const preview = document.getElementById("preview");
     let compiledMarkdown = "";
     let outputDate = "";
-    let editionFiles = new Map();
+    let editionTags = new Map();
 
     function setStatus(message, kind = "info") {
       statusElement.textContent = message;
@@ -157,33 +157,44 @@
       return { sha: commit.sha, committedAt: commit.commit?.committer?.date || "" };
     }
 
-    async function getEditionFiles(sha) {
-      const response = await fetch(`${API_ROOT}/contents/versions?ref=${encodeURIComponent(sha)}`, {
-        headers: { "Accept": "application/vnd.github+json" }, cache: "no-store"
-      });
-      if (!response.ok) throw new Error(`Could not list the edition records (GitHub returned ${response.status}).`);
-      const entries = await response.json();
-      return entries.filter(item => item.type === "file" && /^constitution-v\d+\.md$/i.test(item.name)).map(item => item.path);
+    async function getEditionTags() {
+      const tags = [];
+      let page = 1;
+      while (true) {
+        const response = await fetch(`${API_ROOT}/tags?per_page=100&page=${page}`, {
+          headers: { "Accept": "application/vnd.github+json" }, cache: "no-store"
+        });
+        if (response.status === 404) throw new Error("The repository is not publicly readable yet. The no-login app needs public read access to list editions and fetch Constitution files.");
+        if (response.status === 403 || response.status === 429) throw new Error("GitHub temporarily refused the edition-list request. Wait a little, then try again.");
+        if (!response.ok) throw new Error(`Could not list Constitution edition tags (GitHub returned ${response.status}).`);
+        const pageTags = await response.json();
+        tags.push(...pageTags);
+        if (pageTags.length < 100) break;
+        page++;
+      }
+      return tags.map(tag => {
+        const match = tag.name.match(/^ccc-v(\d+)$/i);
+        return match && tag.commit?.sha ? { version: Number(match[1]), name: tag.name, sha: tag.commit.sha } : null;
+      }).filter(Boolean);
     }
 
     async function loadEditionChoices() {
       try {
-        const source = await getSourceCommit();
-        const paths = await getEditionFiles(source.sha);
-        editionFiles = new Map(paths.map(path => [Number(path.match(/constitution-v(\d+)\.md$/i)[1]), path]));
+        const tags = await getEditionTags();
+        editionTags = new Map(tags.map(tag => [tag.version, tag]));
         editionSelect.replaceChildren();
         editionSelect.add(new Option("Current working draft (latest MRI snapshots)", "current"));
-        [...editionFiles.keys()].sort((a, b) => a - b).forEach(version => {
-          editionSelect.add(new Option(`Constitution Version ${version}`, String(version)));
+        [...editionTags.values()].sort((a, b) => a.version - b.version).forEach(tag => {
+          editionSelect.add(new Option(`Constitution Version ${tag.version}`, String(tag.version)));
         });
-        if (editionFiles.size === 0) {
+        if (editionTags.size === 0) {
           editionSelect.add(new Option("No numbered editions recorded yet", "none"));
           editionSelect.options[1].disabled = true;
         }
         editionSelect.disabled = false;
         assembleButton.disabled = false;
-        setStatus(editionFiles.size
-          ? `Found ${editionFiles.size} numbered Constitution edition${editionFiles.size === 1 ? "" : "s"}, plus the current working draft.`
+        setStatus(editionTags.size
+          ? `Found ${editionTags.size} numbered Constitution edition${editionTags.size === 1 ? "" : "s"}, plus the current working draft.`
           : "No numbered Constitution editions have been recorded yet. You can still assemble the current working draft.");
       } catch (error) {
         editionSelect.replaceChildren(new Option("Could not load editions", "error"));
@@ -319,22 +330,28 @@
       preview.value = "";
       sourceMeta.textContent = "";
       compiledMarkdown = "";
-      setStatus("Reading the latest commit from GitHub…");
+      setStatus("Preparing the selected Constitution source…");
 
       try {
-        const source = await getSourceCommit();
-        const freshEditionPaths = await getEditionFiles(source.sha);
-        editionFiles = new Map(freshEditionPaths.map(path => [Number(path.match(/constitution-v(\d+)\.md$/i)[1]), path]));
-        setStatus("Reading the Master Record Index…");
-        const mri = await fetchAtCommit(MRI_PATH, source.sha);
-        const topics = readTopicsFromMRI(mri);
         const selectedVersion = editionSelect.value;
         if (selectedVersion === "none" || selectedVersion === "error") throw new Error("Select an available edition before assembling.");
         const isNumberedEdition = selectedVersion !== "current";
         const version = isNumberedEdition ? Number(selectedVersion) : null;
+        let source;
         if (isNumberedEdition) {
-          const editionPath = editionFiles.get(version);
-          if (!editionPath) throw new Error(`Constitution Version ${version} is no longer listed. Reload the page and try again.`);
+          const freshTags = await getEditionTags();
+          editionTags = new Map(freshTags.map(tag => [tag.version, tag]));
+          source = editionTags.get(version);
+          if (!source) throw new Error(`Constitution Version ${version} is no longer tagged. Reload the page and try again.`);
+        } else {
+          source = await getSourceCommit();
+          source.ref = BRANCH;
+        }
+        setStatus(`Reading the Master Record Index from ${isNumberedEdition ? source.name : "main"}…`);
+        const mri = await fetchAtCommit(MRI_PATH, source.sha);
+        const topics = readTopicsFromMRI(mri);
+        if (isNumberedEdition) {
+          const editionPath = `versions/constitution-v${version}.md`;
           setStatus(`Reading the Constitution Version ${version} index…`);
           const editionIds = readEditionTopics(await fetchAtCommit(editionPath, source.sha), version);
           validateEditionTopicSet(editionIds, topics, version);
@@ -384,7 +401,7 @@
           "",
           isNumberedEdition ? `**Constitution edition:** Version ${version}` : "**Constitution edition:** Current working draft",
           `**Assembled:** ${generatedAt}`,
-          `**Source:** \`${OWNER}/${REPOSITORY}\` on \`${BRANCH}\` at \`${source.sha}\`${source.committedAt ? ` (source commit dated ${source.committedAt})` : ""}`,
+          `**Source:** \`${OWNER}/${REPOSITORY}\` at ${isNumberedEdition ? `tag \`${source.name}\`` : `branch \`${BRANCH}\``}, commit \`${source.sha}\`${source.committedAt ? ` (source commit dated ${source.committedAt})` : ""}`,
           `**Included:** ${topicCount} Topics and ${clauseCount} clauses, in MRI order.`,
           "",
           "---",
@@ -394,7 +411,7 @@
         ].join("\n");
 
         preview.value = compiledMarkdown;
-        sourceMeta.textContent = `Built from main at ${source.sha}. ${topicCount} Topics and ${clauseCount} clauses.`;
+        sourceMeta.textContent = `Built from ${isNumberedEdition ? `tag ${source.name}` : "main"} at ${source.sha}. ${topicCount} Topics and ${clauseCount} clauses.`;
         setStatus("Compilation complete. Review the preview, then download the Markdown file.", "success");
         downloadButton.disabled = false;
       } catch (error) {
