@@ -63,6 +63,11 @@
     .markdown-body pre { overflow-x: auto; padding: 12px; background: var(--ground); border-radius: 6px; }
     .markdown-body blockquote { margin-left: 0; padding-left: 14px; border-left: 3px solid var(--line); color: var(--muted); }
     .markdown-body a { color: var(--blue-dark); }
+    .topic-group { border: 1px solid var(--line); border-radius: 8px; margin: 12px 0; background: white; }
+    .topic-summary { cursor: pointer; padding: 13px 16px; font-weight: 700; color: var(--ink); }
+    .topic-summary span[role="heading"] { display: inline-block; }
+    .topic-content { padding: 0 16px 16px; }
+    .topic-content > :first-child { margin-top: 0; }
     footer { margin: 18px 2px; color: var(--muted); font-size: .88rem; }
     @page { size: A4; margin: 18mm; }
     @media print {
@@ -75,6 +80,12 @@
       .markdown-body h1, .markdown-body h2, .markdown-body h3 { break-after: avoid-page; }
       .markdown-body table, .markdown-body blockquote, .markdown-body pre { break-inside: avoid; }
       .markdown-body a { color: inherit; text-decoration: none; }
+      .topic-group, .topic-content { display: block !important; }
+      .topic-group:not([open]) > .topic-content { display: block !important; }
+      .topic-summary { display: block !important; cursor: default; list-style: none; padding: 0; margin: 1.5em 0 .5em; font-size: 16pt; color: #111; }
+      .topic-summary::-webkit-details-marker { display: none; }
+      .topic-group { border: 0; margin: 0; padding: 0; }
+      .topic-content { padding: 0; }
     }
     @media (max-width: 600px) {
       main { width: min(100% - 20px, 1060px); margin: 18px auto; }
@@ -547,7 +558,7 @@ function a(e,t){return n(e)||r(e,t)||o(e,t)||i()}function o(e,n){if(e){if(typeof
         ].join("\n");
 
         rawMarkdown.value = compiledMarkdown;
-        const renderedHtml = marked.parse(compiledMarkdown, { gfm: true, breaks: false });
+        const renderedHtml = renderTopicPreview(compiledMarkdown);
         renderedOutput.innerHTML = DOMPurify.sanitize(renderedHtml, {
           USE_PROFILES: { html: true },
           FORBID_TAGS: ["audio", "iframe", "img", "object", "script", "style", "video"],
@@ -562,6 +573,29 @@ function a(e,t){return n(e)||r(e,t)||o(e,t)||i()}function o(e,n){if(e){if(typeof
       } finally {
         assembleButton.disabled = false;
       }
+    }
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;"
+      })[character]);
+    }
+
+    function renderTopicPreview(markdown) {
+      const topicHeading = /^## (T\d+) — (.+)$/gm;
+      const matches = [...markdown.matchAll(topicHeading)];
+      if (!matches.length) return marked.parse(markdown, { gfm: true, breaks: false });
+
+      const html = [marked.parse(markdown.slice(0, matches[0].index), { gfm: true, breaks: false })];
+      matches.forEach((match, index) => {
+        const bodyStart = match.index + match[0].length;
+        const bodyEnd = index + 1 < matches.length ? matches[index + 1].index : markdown.length;
+        const body = markdown.slice(bodyStart, bodyEnd).replace(/\s*---\s*$/, "").trim();
+        const title = escapeHtml(match[1] + " — " + match[2].trim());
+        const content = marked.parse(body, { gfm: true, breaks: false });
+        html.push('<details class="topic-group"><summary class="topic-summary"><span role="heading" aria-level="2">' + title + '</span></summary><div class="topic-content">' + content + '</div></details>');
+      });
+      return html.join("\n");
     }
 
     function downloadMarkdown() {
