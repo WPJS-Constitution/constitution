@@ -1,9 +1,9 @@
 # Current Constitution Status
 
 **Formal Constitution edition:** None assembled, approved, or published yet.  
-**Current working material:** T01 — Purpose, Role and Authority of the Constitution, BASE snapshot; in progress and not closed. T05 — Intention, BASE snapshot; in progress and not closed. T04 — Finances, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed. T03 — Meetings, BASE snapshot; in progress and not closed.
-**Planned next Topics:** T06 — Financial Reporting, intended between Finances and Voting in the assembly order. T07 — Policies, planned for development after Financial Reporting; its assembly position is to be decided.  
-**Topic map:** In development; the MRI currently lists five Topics with BASE clauses; two planned Topics are not yet registered in the MRI.
+**Current working material:** T01 — Purpose, Role and Authority of the Constitution, BASE snapshot; in progress and not closed. T05 — Intention, BASE snapshot; in progress and not closed. T04 — Finances, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed. T03 — Meetings, BASE snapshot; in progress and not closed. T07 — Policies, BASE snapshot; in progress and not closed.
+**Planned next Topic:** T06 — Financial Reporting, intended between Finances and Voting in the assembly order. T07 currently follows T03 in the MRI; its position may be reconsidered.  
+**Topic map:** In development; the MRI currently lists six Topics with BASE clauses; Financial Reporting is planned but not yet registered.
 
 ## Versioning rule
 
