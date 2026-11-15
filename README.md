@@ -45,8 +45,8 @@ Every outcome needs topic-level development, consistency review, and the require
 - [Finances — BASE index](topics/T04-finances/BASE/index.md)
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
-- Planned insertion: T06 — Financial Reporting, after Finances and before Voting; its BASE is not drafted yet.
-- Planned next Topic for development: T07 — Policies; its final position in the Constitution remains to be decided.
+- [Policies — BASE index](topics/T07-policies/BASE/index.md)
+- Planned insertion: T06 — Financial Reporting, after Finances and before Voting; its BASE is not drafted yet. T07 currently follows T03 in the MRI, and that position may be reconsidered.
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -54,7 +54,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The five clause-bearing Topics are **Purpose, Role and Authority of the Constitution**, **Intention**, **Finances**, **Voting**, and **Meetings**, in MRI order. Financial Reporting is planned as T06; Policies is planned as T07. No numbered Constitution edition has been assembled, formally approved, or published.
+The six clause-bearing Topics are **Purpose, Role and Authority of the Constitution**, **Intention**, **Finances**, **Voting**, **Meetings**, and **Policies**, in MRI order. Financial Reporting is planned as T06. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 

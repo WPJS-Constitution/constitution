@@ -4,7 +4,7 @@ The MRI shows the latest recorded snapshot and working status of each agreed Top
 
 The topic map is still being developed. This is therefore an initial register, not a complete list of all Topics.
 
-The current Topic order is T01, T05, T04, T02, and T03. T06 — Financial Reporting is planned for insertion after T04 and before T02 when its BASE is created. A Policies Topic is also planned next for development; its Constitution position will be decided separately.
+The current BASE Topic order is T01, T05, T04, T02, T03, and T07. T06 — Financial Reporting remains planned for insertion after T04 and before T02 when its BASE is created. T07 — Policies currently follows T03 in the MRI; its Constitution position may be reconsidered as the Topic map develops.
 
 | Topic ID | Topic | Latest snapshot | Status | Next step |
 |---|---|---|---|---|
@@ -13,6 +13,7 @@ The current Topic order is T01, T05, T04, T02, and T03. T06 — Financial Report
 | T04 | [Finances](../topics/T04-finances/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T02 | [Voting](../topics/T02-voting/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T03 | [Meetings](../topics/T03-meetings/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
+| T07 | [Policies](../topics/T07-policies/BASE/index.md) | BASE | In progress; not closed | Resolve the open design questions recorded in the Topic index |
 
 ## How to use this index
 
