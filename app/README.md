@@ -12,6 +12,8 @@ After assembling, use the **Preview** and **Raw Markdown** tabs to switch betwee
 
 The Markdown renderer and HTML sanitizer are pinned and bundled inside `index.html`, so the app remains a single-file download and does not load either library from a CDN.
 
+The rendered Preview groups content into expandable Topic sections. The Markdown download remains complete, and PDF printing includes every Topic whether its Preview section is expanded or collapsed.
+
 ## What the choices mean
 
 - **Current working draft** reads the latest `main` commit and follows the Topic snapshots in `register/master-record-index.md`, in MRI order. It can include ongoing, unclosed Topics.
