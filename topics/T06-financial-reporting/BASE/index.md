@@ -27,6 +27,7 @@ No wording, rule, structure, or decision is inherited from a previous Constituti
 - [T06-C10 — Independent external audit](T06-C10-external-audit.md)
 - [T06-C11 — Annual Financial Report and the AGM](T06-C11-agm-report.md)
 - [T06-C12 — Correcting a published report](T06-C12-corrections.md)
+- [T06-C13 — Digital access to financial reports](T06-C13-digital-access.md)
 
 ## Design notes (not proposed Constitution clauses)
 
@@ -34,9 +35,10 @@ No wording, rule, structure, or decision is inherited from a previous Constituti
 - The five required reports are four quarterly reports and one Annual Financial Report.
 - Officials need the exact financial position and figures, down to the final cent. Members need a clear account of financial health, income, and expenditure.
 - The guiding principle is “every cent accounted for.”
-- The Annual Financial Report includes the detailed budget-versus-actual comparison. The dashboard gives members a summary of budgets, results, and an indicator of how well each budget anticipated actual income and expenditure.
-- The indicator’s method is defined by Policy and the accountant sets the score. The figures and basis remain visible; the indicator does not replace them.
-- The draft Annual Financial Report is sent with the AGM notice and finalised at the AGM using the final financial information and any adjustments made there. Meetings do not vote.
+- Quarterly and annual reports compare budgeted and actual results and show the applicable budget score or indicator. The dashboard shows each budget, its actual results, and its score or indicator.
+- Policy defines how scores are assessed, and the accountant sets each score. The figures and basis remain visible; the indicator does not replace them.
+- The draft Annual Financial Report is sent with the AGM notice. The final financial figures are presented at the AGM and included in the final report; the AGM does not vote on it.
+- Every financial report must be available digitally to every member.
 - T06-C10 records the current audit intention only. Its wording and scope must be refined after consultation with accounting officials.
 - Membership fees contribute to WPJS’s costs, including fixed costs such as external audit and reliable, monitored email delivery. Fee setting and budgeting remain under T04; this Topic reports the resulting income and expenditure. No fee is presumed to be ring-fenced for a particular cost.
 - Policy may describe reporting methods, but must not weaken or waive requirements in this Topic.
