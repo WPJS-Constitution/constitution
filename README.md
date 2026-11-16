@@ -58,6 +58,6 @@ The seven clause-bearing Topics are **Purpose, Role and Authority of the Constit
 
 ## Review and approval
 
-Keep the working repository private and give access according to each person's role. Contributors use their own GitHub accounts so changes and reviews are attributable. Review proposed text changes before they become the current draft.
+The repository is public so stakeholders can read the work. Proposed changes are submitted through pull requests and reviewed before they become part of the current draft. Contributors use their own GitHub accounts so changes and reviews are attributable.
 
 A repository change records a working version; it does not by itself constitute formal approval. Record stakeholder consultation, voting, and adoption separately.
