@@ -29,7 +29,7 @@ No wording, rule, structure, or decision is inherited from a previous Constituti
 
 - A proxy was considered. It is not included because electronic voting allows each member to cast their own vote without attending a meeting.
 - The option with the highest count wins. A strict majority is not required. This makes the closing test about whether any uncast vote could change which option has the highest count.
-- The voter roll is intended to come directly from the members-in-good-standing list. The Membership topic must define that status.
+- For each vote, the voter roll is drawn from the members-in-good-standing list when the vote opens and then remains fixed for that vote. Later changes to membership do not change that vote’s voter roll. The Membership topic must define good-standing status.
 - Voting is a duty, but the vote may close before every member responds if remaining votes can no longer change which option has the highest count.
 - Ballot privacy and a live aggregate count must both be supported: members can be confirmed as having voted, but their selected option is not linked to them or disclosed.
 - The Constitution should set durable voting principles; the specific electronic tool, reminders, access controls, and operational safeguards belong in policy.
