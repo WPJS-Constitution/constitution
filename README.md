@@ -43,10 +43,10 @@ Every outcome needs topic-level development, consistency review, and the require
 - [First Topic — BASE index](topics/T01-purpose-role-authority/BASE/index.md)
 - [Intention — BASE index](topics/T05-intention/BASE/index.md)
 - [Finances — BASE index](topics/T04-finances/BASE/index.md)
+- [Financial Reporting — BASE index](topics/T06-financial-reporting/BASE/index.md)
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
 - [Policies — BASE index](topics/T07-policies/BASE/index.md)
-- Planned insertion: T06 — Financial Reporting, after Finances and before Voting; its BASE is not drafted yet. T07 currently follows T03 in the MRI, and that position may be reconsidered.
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -54,10 +54,10 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The six clause-bearing Topics are **Purpose, Role and Authority of the Constitution**, **Intention**, **Finances**, **Voting**, **Meetings**, and **Policies**, in MRI order. Financial Reporting is planned as T06. No numbered Constitution edition has been assembled, formally approved, or published.
+The seven clause-bearing Topics are **Purpose, Role and Authority of the Constitution**, **Intention**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, and **Policies**, in MRI order. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
-Keep the working repository private and give access according to each person's role. Contributors use their own GitHub accounts so changes and reviews are attributable. Review proposed text changes before they become the current draft.
+The repository is public so stakeholders can read the work. Proposed changes are submitted through pull requests and reviewed before they become part of the current draft. Contributors use their own GitHub accounts so changes and reviews are attributable.
 
 A repository change records a working version; it does not by itself constitute formal approval. Record stakeholder consultation, voting, and adoption separately.
