@@ -3,4 +3,4 @@
 **Topic version:** BASE  
 **Status:** Proposed
 
-The Constitution sets the lasting framework: what must be achieved, who is responsible, and how authority is held accountable. Policies explain how the work is done. A policy cannot override the Constitution and must be reviewed when the people responsible for governance change.
+The Constitution sets the lasting requirements and boundaries. Policies explain how WPJS carries out its work. Each Policy must follow the Constitution and cannot override, weaken, or waive it. Each new governing body must review Policies as set out in the Policies Topic.
