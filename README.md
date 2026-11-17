@@ -42,12 +42,12 @@ Every outcome needs topic-level development, consistency review, and the require
 
 - [First Topic — BASE index](topics/T01-purpose-role-authority/BASE/index.md)
 - [Intention — BASE index](topics/T05-intention/BASE/index.md)
+- [Authority, Accountability and Independent Review — BASE index](topics/T08-authority-accountability-independent-review/BASE/index.md)
 - [Finances — BASE index](topics/T04-finances/BASE/index.md)
 - [Financial Reporting — BASE index](topics/T06-financial-reporting/BASE/index.md)
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
 - [Policies — BASE index](topics/T07-policies/BASE/index.md)
-- [Authority, Accountability and Independent Review — BASE index](topics/T08-authority-accountability-independent-review/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -55,7 +55,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The eight clause-bearing Topics are **Purpose, Role and Authority of the Constitution**, **Intention**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, and **Authority, Accountability and Independent Review**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
+The eight clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, and **Policies**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 

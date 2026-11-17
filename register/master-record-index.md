@@ -4,18 +4,18 @@ The MRI shows the latest recorded snapshot and working status of each agreed Top
 
 The topic map is still being developed. This is therefore an initial register, not a complete list of all Topics.
 
-The current BASE Topic order is T01, T05, T04, T06, T02, T03, T07, and T08. T07 — Policies currently follows T03 in the MRI; its Constitution position may be reconsidered as the Topic map develops.
+The current BASE Topic order is T01, T05, T08, T04, T06, T02, T03, and T07. T07 — Policies currently follows T03 in the MRI; its Constitution position may be reconsidered as the Topic map develops.
 
 | Topic ID | Topic | Latest snapshot | Status | Next step |
 |---|---|---|---|---|
-| T01 | [Purpose, Role and Authority of the Constitution](../topics/T01-purpose-role-authority/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
+| T01 | [Purpose, Status and Role of the Constitution](../topics/T01-purpose-role-authority/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T05 | [Intention](../topics/T05-intention/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
+| T08 | [Authority, Accountability and Independent Review](../topics/T08-authority-accountability-independent-review/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T04 | [Finances](../topics/T04-finances/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T06 | [Financial Reporting](../topics/T06-financial-reporting/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T02 | [Voting](../topics/T02-voting/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T03 | [Meetings](../topics/T03-meetings/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 | T07 | [Policies](../topics/T07-policies/BASE/index.md) | BASE | In progress; not closed | Resolve the open design questions recorded in the Topic index |
-| T08 | [Authority, Accountability and Independent Review](../topics/T08-authority-accountability-independent-review/BASE/index.md) | BASE | In progress; not closed | Refine the clauses and resolve the open points recorded in the Topic index |
 
 ## How to use this index
 

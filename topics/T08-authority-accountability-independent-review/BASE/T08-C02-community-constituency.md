@@ -1,3 +1,3 @@
 # T08-C02 — The community and the Constituency
 
-The community WPJS serves is wider than its formal Constituency. The Membership Topic defines which individuals and institutions are members and hold the decision rights given to members by this Constitution.
+WPJS serves the wider community described in T01-C01. The Constituency is made up of the members defined in the Membership Topic and holds the member decision rights set by this Constitution. A person or institution does not become a member solely because WPJS serves them.
