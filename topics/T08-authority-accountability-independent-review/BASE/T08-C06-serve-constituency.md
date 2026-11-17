@@ -1,3 +1,3 @@
-# T08-C06 — Office holders serve the Constituency
+# T08-C06 — Office holders serve the community and answer to the Constituency
 
-Office holders act for WPJS and the community it serves. They must not direct the Constituency according to their own preferences or treat their position as authority over it.
+Office holders are accountable to the Constituency. They must use their authority within their role to serve junior squash and must not direct the Constituency according to personal preference.
