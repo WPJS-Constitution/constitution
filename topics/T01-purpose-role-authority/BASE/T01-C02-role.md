@@ -3,4 +3,4 @@
 **Topic version:** BASE  
 **Status:** Proposed
 
-The Constitution is the guide for people entrusted with looking after junior squash. It provides a framework for keeping activities running and for making fair, transparent decisions about how they are run.
+Once adopted, the Constitution is WPJS’s formal governing document. It sets the lasting purpose, requirements, and boundaries for WPJS. It guides the people entrusted with junior squash without scripting every operational step.
