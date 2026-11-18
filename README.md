@@ -48,6 +48,7 @@ Every outcome needs topic-level development, consistency review, and the require
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
 - [Policies — BASE index](topics/T07-policies/BASE/index.md)
+- [Complaints and Discipline Remediation — BASE index](topics/T09-complaints-and-discipline-remediation/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -55,7 +56,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The eight clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, and **Policies**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
+The nine clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, and **Complaints and Discipline Remediation**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
