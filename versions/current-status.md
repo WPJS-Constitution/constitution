@@ -1,9 +1,9 @@
 # Current Constitution Status
 
 **Formal Constitution edition:** None assembled, approved, or published yet.  
-**Current working material:** T01 — Purpose, Status and Role of the Constitution, BASE snapshot; in progress and not closed. T05 — Intention, BASE snapshot; in progress and not closed. T08 — Authority, Accountability and Independent Review, BASE snapshot; in progress and not closed. T04 — Finances, BASE snapshot; in progress and not closed. T06 — Financial Reporting, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed. T03 — Meetings, BASE snapshot; in progress and not closed. T07 — Policies, BASE snapshot; in progress and not closed. T09 — Complaints and Discipline Remediation, BASE snapshot; in progress and not closed.  
+**Current working material:** T01 — Purpose, Status and Role of the Constitution, BASE snapshot; in progress and not closed. T05 — Intention, BASE snapshot; in progress and not closed. T08 — Authority, Accountability and Independent Review, BASE snapshot; in progress and not closed. T04 — Finances, BASE snapshot; in progress and not closed. T06 — Financial Reporting, BASE snapshot; in progress and not closed. T02 — Voting, BASE snapshot; in progress and not closed. T03 — Meetings, BASE snapshot; in progress and not closed. T07 — Policies, BASE snapshot; in progress and not closed. T09 — The Disciplinary Process, BASE snapshot; in progress and not closed. T10 — Remediation, BASE snapshot; in progress and not closed. T11 — Disciplinary, BASE snapshot; in progress and not closed.  
 **Planned later Topic:** Membership and Stakeholder Participation, intentionally deferred for later development.  
-**Topic map:** In development; the MRI currently lists nine Topics with BASE clauses.
+**Topic map:** In development; the MRI currently lists eleven Topics with BASE clauses.
 
 ## Versioning rule
 

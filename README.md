@@ -48,7 +48,9 @@ Every outcome needs topic-level development, consistency review, and the require
 - [Voting — BASE index](topics/T02-voting/BASE/index.md)
 - [Meetings — BASE index](topics/T03-meetings/BASE/index.md)
 - [Policies — BASE index](topics/T07-policies/BASE/index.md)
-- [Complaints and Discipline Remediation — BASE index](topics/T09-complaints-and-discipline-remediation/BASE/index.md)
+- [The Disciplinary Process — BASE index](topics/T09-the-disciplinary-process/BASE/index.md)
+- [Remediation — BASE index](topics/T10-remediation/BASE/index.md)
+- [Disciplinary — BASE index](topics/T11-disciplinary/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -56,7 +58,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The nine clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, and **Complaints and Discipline Remediation**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
+The eleven clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, **The Disciplinary Process**, **Remediation**, and **Disciplinary**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 

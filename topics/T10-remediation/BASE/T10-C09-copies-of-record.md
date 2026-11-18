@@ -1,4 +1,4 @@
-# T09-C13 — Giving each party a written record
+# T10-C09 — Giving each party a written record
 
 **Status:** Proposed
 
