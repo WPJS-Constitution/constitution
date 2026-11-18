@@ -1,4 +1,4 @@
-# T09-C06 — Protection from retaliation
+# T09-C07 — Protection from retaliation
 
 **Status:** Proposed
 

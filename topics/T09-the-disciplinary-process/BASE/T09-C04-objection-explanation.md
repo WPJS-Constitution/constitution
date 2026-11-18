@@ -1,4 +1,4 @@
-# T09-C02 — What a Member raising an Objection must explain
+# T09-C04 — What a Member raising an Objection must explain
 
 **Status:** Proposed
 

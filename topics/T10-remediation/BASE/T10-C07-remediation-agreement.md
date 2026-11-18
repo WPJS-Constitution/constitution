@@ -1,4 +1,4 @@
-# T09-C09 — What a Remediation agreement must record
+# T10-C07 — What an agreement must record
 
 **Status:** Proposed
 

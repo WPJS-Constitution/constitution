@@ -1,4 +1,4 @@
-# T09-C05 — Support for a junior player
+# T09-C06 — Support for a junior player
 
 **Status:** Proposed
 

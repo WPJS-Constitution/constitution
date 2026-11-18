@@ -1,4 +1,4 @@
-# T09-C08 — Authority and reasons for a disputed decision
+# T10-C04 — Authority and reasons for a disputed decision
 
 **Status:** Proposed
 
