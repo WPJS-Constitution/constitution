@@ -4,7 +4,7 @@ The MRI shows the latest recorded snapshot and working status of each agreed Top
 
 The topic map is still being developed. This is therefore an initial register, not a complete list of all Topics.
 
-The current BASE Topic order is T01, T05, T08, T04, T06, T02, T03, T07, T09, T10, and T11. T07 — Policies currently follows T03 in the MRI; its Constitution position may be reconsidered as the Topic map develops.
+The current BASE Topic order is T01, T05, T08, T04, T06, T02, T03, T07, T09, T10, T11, T12, T13, T14, T15, T16, and T17. T07 — Policies currently follows T03 in the MRI; its Constitution position may be reconsidered as the Topic map develops.
 
 | Topic ID | Topic | Latest snapshot | Status | Next step |
 |---|---|---|---|---|
@@ -19,6 +19,12 @@ The current BASE Topic order is T01, T05, T08, T04, T06, T02, T03, T07, T09, T10
 | T09 | [The Disciplinary Process](../topics/T09-the-disciplinary-process/BASE/index.md) | BASE | In progress; not closed | Review the proposed BASE clauses |
 | T10 | [Remediation](../topics/T10-remediation/BASE/index.md) | BASE | In progress; not closed | Review the proposed BASE clauses |
 | T11 | [Disciplinary](../topics/T11-disciplinary/BASE/index.md) | BASE | In progress; not closed | Draft the remaining panel, hearing, decision and cost clauses |
+| T12 | [Appeals](../topics/T12-appeals/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T13 | [Membership](../topics/T13-membership/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T14 | [Governance and Operations](../topics/T14-governance-and-operations/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T15 | [Safeguarding and Player Welfare](../topics/T15-safeguarding-and-player-welfare/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T16 | [External Relationships and Affiliation](../topics/T16-external-relationships-and-affiliation/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T17 | [Adoption, Amendment and Transition](../topics/T17-adoption-amendment-and-transition/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
 
 ## How to use this index
 

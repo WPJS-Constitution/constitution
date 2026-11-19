@@ -24,4 +24,4 @@ Set out how matters enter the disciplinary process, how its stages fit together,
 
 - [T10 — Remediation](../../T10-remediation/BASE/index.md)
 - [T11 — Disciplinary](../../T11-disciplinary/BASE/index.md)
-- T12 — Appeals is planned.
+- [T12 — Appeals](../../T12-appeals/BASE/index.md)
