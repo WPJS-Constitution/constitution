@@ -51,6 +51,12 @@ Every outcome needs topic-level development, consistency review, and the require
 - [The Disciplinary Process — BASE index](topics/T09-the-disciplinary-process/BASE/index.md)
 - [Remediation — BASE index](topics/T10-remediation/BASE/index.md)
 - [Disciplinary — BASE index](topics/T11-disciplinary/BASE/index.md)
+- [Appeals — BASE index](topics/T12-appeals/BASE/index.md)
+- [Membership — BASE index](topics/T13-membership/BASE/index.md)
+- [Governance and Operations — BASE index](topics/T14-governance-and-operations/BASE/index.md)
+- [Safeguarding and Player Welfare — BASE index](topics/T15-safeguarding-and-player-welfare/BASE/index.md)
+- [External Relationships and Affiliation — BASE index](topics/T16-external-relationships-and-affiliation/BASE/index.md)
+- [Adoption, Amendment and Transition — BASE index](topics/T17-adoption-amendment-and-transition/BASE/index.md)
 - [Master Record Index](register/master-record-index.md)
 - [Current Constitution status](versions/current-status.md)
 
@@ -58,7 +64,7 @@ Each Topic-version folder contains an index and separate clause files with stabl
 
 ## Current status
 
-The eleven clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, **The Disciplinary Process**, **Remediation**, and **Disciplinary**, in MRI order. Membership and Stakeholder Participation is intentionally deferred for later development. No numbered Constitution edition has been assembled, formally approved, or published.
+The seventeen clause-bearing Topics are **Purpose, Status and Role of the Constitution**, **Intention**, **Authority, Accountability and Independent Review**, **Finances**, **Financial Reporting**, **Voting**, **Meetings**, **Policies**, **The Disciplinary Process**, **Remediation**, **Disciplinary**, **Appeals**, **Membership**, **Governance and Operations**, **Safeguarding and Player Welfare**, **External Relationships and Affiliation**, and **Adoption, Amendment and Transition**, in MRI order. No numbered Constitution edition has been assembled, formally approved, or published.
 
 ## Review and approval
 
