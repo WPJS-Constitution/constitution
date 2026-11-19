@@ -18,8 +18,8 @@ The current BASE Topic order is T01, T05, T08, T04, T06, T02, T03, T07, T09, T10
 | T07 | [Policies](../topics/T07-policies/BASE/index.md) | BASE | In progress; not closed | Resolve the open design questions recorded in the Topic index |
 | T09 | [The Disciplinary Process](../topics/T09-the-disciplinary-process/BASE/index.md) | BASE | In progress; not closed | Review the proposed BASE clauses |
 | T10 | [Remediation](../topics/T10-remediation/BASE/index.md) | BASE | In progress; not closed | Review the proposed BASE clauses |
-| T11 | [Disciplinary](../topics/T11-disciplinary/BASE/index.md) | BASE | In progress; not closed | Review the proposed panel appointment and decision-making clauses. Draft hearing and cost allocation clauses. |
-| T12 | [Appeals](../topics/T12-appeals/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
+| T11 | [Disciplinary](../topics/T11-disciplinary/BASE/index.md) | BASE | In progress; not closed | Review the proposed clauses and draft the hearing procedure. |
+| T12 | [Appeals](../topics/T12-appeals/BASE/index.md) | BASE | In progress; not closed | Review the proposed Appeals clauses |
 | T13 | [Membership](../topics/T13-membership/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
 | T14 | [Governance and Operations](../topics/T14-governance-and-operations/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
 | T15 | [Safeguarding and Player Welfare](../topics/T15-safeguarding-and-player-welfare/BASE/index.md) | BASE | In progress; not closed | Develop clauses beyond the purpose clause |
