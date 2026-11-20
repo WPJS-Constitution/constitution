@@ -23,6 +23,9 @@ No wording, rule, structure, or decision is inherited from a previous Constituti
 - [T05-C08 — Operations and governance are separate](T05-C08-separate-functions.md)
 - [T05-C09 — The Constitution governs WPJS](T05-C09-scope-of-the-ccc.md)
 - [T05-C10 — Version control and traceability](T05-C10-version-control.md)
+- [T05-C11 — Expectations must fit the junior player](T05-C11-age-appropriate-expectations.md)
+- [T05-C12 — Decisions must consider junior development](T05-C12-junior-development.md)
+- [T05-C13 — Give junior players time to reflect](T05-C13-time-to-reflect.md)
 
 ## Design notes (not proposed Constitution clauses)
 
